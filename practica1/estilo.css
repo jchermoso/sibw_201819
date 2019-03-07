@@ -12,7 +12,7 @@ header img {
     position: absolute;
     height: 22vh;
     margin-top: 3vh;
-    margin-left: 93.5vh;
+    margin-left: 93.8vh;
 }
 
 header h1 {
@@ -43,6 +43,7 @@ main {
     display: flex;
     flex-direction: row;
     box-sizing: border-box;
+    background-color: antiquewhite;
 }
 
 #aux {
@@ -53,15 +54,18 @@ main {
 
 #eventos {
     display:flex;
-    flex-direction: row;
+    flex-wrap: wrap;
     width: 100%;
     height: auto;
+    margin-left: 20vh
 }
 
 .container {
   position: relative;
-  width: 80%;
-
+  width: 70vh;
+  height: 50vh;
+  margin-top: 3vh;
+  margin-left: 3vh;
 }
 
 .image {
