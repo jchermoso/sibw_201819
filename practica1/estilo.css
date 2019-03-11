@@ -5,7 +5,7 @@
 }
 header {
     height: 30vh;
-    background-color: antiquewhite;
+    
 }
 
 header img {
@@ -27,7 +27,8 @@ header ul {
     flex-direction: row;
     list-style: none;
     text-align: center;
-    padding-top: 2vh
+    padding-top: 2vh;
+    font-family: sans-serif;
 }
 
 header ul li {
@@ -38,26 +39,76 @@ li a {
     text-decoration: none;
 }
 
+li a:visited {
+    color:black;
+}
+
 main {
     width: 100%;
     display: flex;
     flex-direction: row;
     box-sizing: border-box;
-    background-color: antiquewhite;
+    background-color: gainsboro;
 }
 
 #aux {
     display:flex;
     flex-direction: column;
     width: 25%;
+    text-align: center;
+    background-color: azure;
+    margin-left: 5vh;
+    font-family: monospace;
+    margin-top: 3vh;
 } 
+
+#aux img {
+    width: 60%;
+    padding-top: 20vh;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: #555;
+  color: white;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  opacity: 0;
+  transition: opacity 0.3s;
+  margin-top: 10vh;
+  right: 10vh;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
 
 #eventos {
     display:flex;
     flex-wrap: wrap;
     width: 100%;
     height: auto;
-    margin-left: 20vh
+    margin-left: 10vh
 }
 
 .container {
@@ -83,7 +134,7 @@ main {
   transition: .5s ease;
   opacity:0;
   color: white;
-  font-size: 20px;
+  font-size: 15vh;
   text-align: center;
   height: 100%;
   overflow: hidden;
@@ -91,4 +142,8 @@ main {
 
 .container:hover .overlay {
   opacity: 1;
+}
+
+footer {
+    text-align: center
 }
