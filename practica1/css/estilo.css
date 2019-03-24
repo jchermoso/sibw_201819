@@ -16,7 +16,7 @@ header img {
     position: absolute;
     height: 22vh;
     margin-top: 3vh;
-    margin-left: 93.8vh;
+    margin-left: 44%;
 }
 
 header h1 {
@@ -55,7 +55,7 @@ main {
     background-color: gainsboro;
 }
 /**formato del panel auxiliar**/
-#aux {
+.panel {
     display:flex;
     flex-direction: column;
     width: 25%;
@@ -65,8 +65,7 @@ main {
     font-family: monospace;
     margin-top: 3vh;
 } 
-
-#aux img {
+.panel img {
     width: 60%;
     padding-top: 20vh;
 }
@@ -184,6 +183,8 @@ main {
     font-size: 2.5vh; 
     
 }
+/** botón y sección comentarios **/
+
 /**estilo botones sociales**/
 .sociales {
 padding: 2vh;    
@@ -217,7 +218,7 @@ padding: 2vh;
 
 /**CSS para formatear la página imprimir**/
 .oculto {
-    visibility: hidden
+    display: none;
 }
 .pos_imp{
     position: absolute;
