@@ -7,6 +7,7 @@
       <meta name="keywords" content="HTML,CSS,JavaScript">
       <meta name="author" content="Juan Carlos Hermoso Quesada y Jonathan Ordóñez Cubero">
       <link rel="stylesheet" href="css/estilo.css">
+      <script type="text/javascript" src="js/script.js"></script>
   </head>
     <body>
         <!--cabecera-->
@@ -35,7 +36,7 @@
                 <h1 id="id_evento" class="titulo">Concierto solidario Linkin Park</h1>
                 <p id="organizador" class="organizador">Linkin Park</p>
                 <p id="fecha" class="fecha">Pr&oacute;ximo viernes 22 de Marzo a las 20h</p>
-                
+
                 <article id="parrafo1" class="parrafo">
                     <img src="img/lk_1.jpg" class="imgLK" alt="Concierto Linkin Park">
                     <p>Linkin Park es una banda estadounidense de rock alternativo procedente de Agoura Hills, California. Formada en 1996, el grupo estuvo inicialmente integrado por Mike Shinoda, Dave Farrell, Joe Hahn, Brad Delson, Rob Bourdon y Mark Wakefield, este &uacute;ltimo como voz principal. La banda inici&oacute; en ese mismo año sus primeros trabajos musicales de manera independiente y posterior a esto grabaron su primer material llamado Xero; sin embargo no tuvieron gran &eacute;xito en la b&uacute;squeda de un sello discogr&aacute;fico ya que nadie mostr&oacute; inter&eacute;s por su trabajo, lo que ocasion&oacute; la renuncia de Mark Wakefield. Poco despu&eacute;s, Chester Bennington se incorpor&oacute; a la banda como vocalista; el grupo realiz&oacute; su primera presentaci&oacute;n en un club de Los Ángeles y siendo respaldados por Jeff Blue, en aquel entonces vicepresidente de Warner Bros. Records, lograron firmar con el sello en 1999. El nombre del grupo es un juego de palabras que hace referencia al Lincoln Park en Santa M&oacute;nica.</p>
@@ -51,6 +52,36 @@
                     <a class="" href="https://twitter.com" target="_blank"><img src="img/tw.jpg" alt="Logo Twitter"></a>
                     <a class="boton_personalizado" href="evento_imprimir.html" target="_blank">Imprimir</a>
                 </div>
+            </section>
+            <!-- Comentarios -->
+            <a id="abrir" class="abrir-cerrar boton_personalizado" href="#" onclick="mostrar()">Desplegar Comentarios</a>
+            <a id="cerrar" class="abrir-cerrar boton_personalizado" href="#" onclick="ocultar()">Cerrar Comentarios</a>
+                
+            <section id="comment" class="comment">
+                <article>
+                    Cada comentario tendrá autor, fecha y hora del comentario y texto del comentario.1
+                </article>
+                <article>
+                    Cada comentario tendrá autor, fecha y hora del comentario y texto del comentario.2
+                </article>
+                <form id="form-comment" action="#" method="POST">
+                    <div>
+                        <label for="nombre">Nombre</label>
+                        <input id="nombre" name="nombre" value="" required>
+                    </div>
+                    <div>
+                        <label for="email">E-mail</label>
+                        <input id="email" name="email" value="" type="email" required>
+                    </div>
+                    <div>
+                        <label for="comentario">Introdce el comentario</label>
+                        <textarea id="comentario" name="comentario"></textarea>
+                    </div>
+                    <div class="button">
+                        <button type="submit">Enviar</button>
+                    </div>                    
+
+                </form>
             </section>
         </main>
         <!--pie de pagina-->

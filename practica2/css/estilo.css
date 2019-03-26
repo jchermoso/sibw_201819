@@ -183,6 +183,14 @@ main {
     font-size: 2.5vh; 
     
 }
+/** botón y sección comentarios **/
+#cerrar {
+    display: none;
+}
+
+.comment{
+    background: red;
+}
 
 /**estilo botones sociales**/
 .sociales {
@@ -196,7 +204,7 @@ padding: 2vh;
 
 .boton_personalizado{
     text-decoration: none;
-    msrgin: 0 0 2vh 0;
+    margin: 0 0 2vh 0;
     font-weight: 600;
     font-size: 20px;
     color: #ffffff;
