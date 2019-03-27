@@ -57,29 +57,44 @@
             <a id="abrir" class="abrir-cerrar boton_personalizado" href="#" onclick="mostrar()">Desplegar Comentarios</a>
             <a id="cerrar" class="abrir-cerrar boton_personalizado" href="#" onclick="ocultar()">Cerrar Comentarios</a>
                 
-            <section id="comment" class="comment">
-              
-                <article>
-                    Cada comentario tendrá autor, fecha y hora del comentario y texto del comentario.
+            <section id="comment" class="comment">                
+                <article class="section">
+                    <form id="form" action="#" method="POST">
+                        <div>
+                            <label for="nombre">Nombre</label>
+                            <input id="nombre" name="nombre" value="" type="text" required>                            
+                        </div>
+                        <div>
+                            <label for="email">E-mail</label>
+                            <input id="email" name="email" value="" type="email" required>
+                        </div>
+                        <div>
+                            <label for="comentario">Introduce el comentario</label>
+                            <textarea id="comentario" name="comentario"></textarea>
+                        </div>
+                        <div class="button">
+                            <button type="submit">Enviar</button>
+                        </div>
+                    </form>
                 </article>
-                <form id="form-comment" action="#" method="POST">
-                    <div>
-                        <label for="nombre">Nombre</label>
-                        <input id="nombre" name="nombre" value="" required>
-                    </div>
-                    <div>
-                        <label for="email">E-mail</label>
-                        <input id="email" name="email" value="" type="email" required>
-                    </div>
-                    <div>
-                        <label for="comentario">Introduce el comentario</label>
-                        <textarea id="comentario" name="comentario"></textarea>
-                    </div>
-                    <div class="button">
-                        <button type="submit">Enviar</button>
-                    </div>                    
-
-                </form>
+                
+                <article id="comment1" class="section">
+                    <p>Jhon</p>
+                    <p>em@hotmail.es</p>
+                    <p>El primer comentario.</p>
+                </article>
+                              
+                <article id="comment2" class="section">
+                    <p>Sarah</p>
+                    <p>sweet@gmail.com</p>
+                    <p>Este grupo es el mejor. Repetir&eacute;</p>
+                </article>
+                
+                <article id="copy_values" class="section">                    
+                    <p id="copy_name"></p>
+                    <p id="copy_email"></p>
+                    <p id="copy_comment"></p>
+                </article>                
             </section>
         </main>
         <!--pie de pagina-->

@@ -184,15 +184,46 @@ main {
     
 }
 /** botón y sección comentarios **/
+#abrir{
+    display: inline-table;
+}
+
 #cerrar {
     display: none;
 }
 
+.section {
+    padding-bottom: 10px;
+    border-bottom-style: ridge;
+    border-bottom-color: aqua;
+}
+
+#copy_values {
+    display: none;
+}
+
 .comment{
-    background: red;
+    background-color: aliceblue;
     display: none;
     padding: 10px;
 }
+
+/** formato formulario **/
+#form{
+    box-sizing: border-box;
+    padding: 5px;
+    border-style: dashed;
+    border-width: 7px;
+    border-color: black;
+}
+
+input[type=text], select, textarea {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
 
 /**estilo botones sociales**/
 .sociales {
@@ -251,3 +282,4 @@ footer {
     padding-top: 5vh;
     font-size:2.5vh;
 }
+
