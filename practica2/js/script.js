@@ -1,13 +1,11 @@
 function mostrar() {
-    document.getElementById("comment").style.width = "600px";
-    document.getElementById("comment").style.marginLeft = "300px";
+    document.getElementById("comment").style.display = "block";
     document.getElementById("abrir").style.display = "none";
     document.getElementById("cerrar").style.display = "inline";
 }
 
 function ocultar() {
-    document.getElementById("comment").style.width = "0";
-    document.getElementById("comment").style.marginLeft = "0";
+    document.getElementById("comment").style.display = "none";
     document.getElementById("abrir").style.display = "inline";
     document.getElementById("cerrar").style.display = "none";
 }
@@ -35,6 +33,15 @@ function STRTemp(textremp){
     return  textolisto;
    
 }
+
+function filtro(){
+    var text = document.getElementById("comentario").value;
+    if (textremp.search(find()) < 0) {
+        alert("No hay resultados");
+    } else {
+                document.getElementById("tremp").value = STRTemp(textremp);
+            }
+}
 function replace(){
   //Comprueba que hay texto en las casillas
     if (find().length == 0) {
@@ -49,4 +56,5 @@ function replace(){
                 document.getElementById("tremp").value = STRTemp(textremp);
             }
     }
+    
 }

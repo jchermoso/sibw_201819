@@ -190,6 +190,8 @@ main {
 
 .comment{
     background: red;
+    display: none;
+    padding: 10px;
 }
 
 /**estilo botones sociales**/
