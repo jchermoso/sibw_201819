@@ -8,6 +8,7 @@ var palabras = ["puta", "gilipollas", "maricon", "polla"];
 window.onload = function () {
     document.getElementById("comentario").addEventListener("keyup", listenEvent);
     document.getElementById("comentario").addEventListener("focus", validate);
+    document.getElementById("div").addEventListener("mouseover", enable)
     document.getElementById("form").addEventListener("submit", submit);
 }
 
@@ -39,9 +40,16 @@ function validate(){
     var txtName = document.getElementById('nombre').value;
     var txtCorreo = document.getElementById('email').value;
     
-    if(txtName != null && txtCorreo != null) {
+    if(txtName.className == undefined && txtCorreo.className == undefined) {
         document.getElementById("comentario").setAttribute("disabled", true);
-    }else {
+    }
+}
+
+function enable(){
+    var txtName = document.getElementById('nombre').value;
+    var txtCorreo = document.getElementById('email').value;
+    
+    if(txtName && txtCorreo) {
         document.getElementById("comentario").removeAttribute("disabled");
     }
 }
