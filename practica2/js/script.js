@@ -2,12 +2,12 @@
 var textobusq = "";
 var textorempl = "";
 var textolisto = "";
-var palabras = ["puta", "gilipollas", "maricon", "polla"];
+var palabras = ["puta", "gilipollas", "maricon", "polla", "retrasado", "idiota", "imbecil", "tonto", "subnormal", "capullo", "cabron"];
 
 //Hasta que no se cargue la página no se ejecuta la función
 window.onload = function () {
     document.getElementById("comentario").addEventListener("keyup", listenEvent);
-    document.getElementById("comentario").addEventListener("focus", validate);
+    //document.getElementById("comentario").addEventListener("click", validate);
     document.getElementById("div").addEventListener("mouseover", enable)
     document.getElementById("form").addEventListener("submit", submit);
 }
@@ -42,6 +42,8 @@ function validate(){
     
     if(txtName.className == undefined && txtCorreo.className == undefined) {
         document.getElementById("comentario").setAttribute("disabled", true);
+    }else{
+        document.getElementById("comentario").removeEventListener("click", validate);
     }
 }
 
