@@ -1,19 +1,9 @@
-<!DOCTYPE html>
-<html lang="es">
-    <head>
-      <title>SALA TEABAG</title>
-      <meta charset="utf-8">
-      <meta name="description" content="Práctica de la asignatura SIBW">
-      <meta name="keywords" content="HTML,CSS,JavaScript">
-      <meta name="author" content="Juan Carlos Hermoso Quesada y Jonathan Ordóñez Cubero">
-      <link rel="stylesheet" href="../css/estilo.css">
-  </head>
-        <body>
-        <?php include("header.php");?>
+{% extends 'base.html' %} {% block context %}
+        {{ include("header.php") }}
         <!--zona principal-->
         <main>
             <!--panel auxiliar-->
-            <?php include("sidebar.php");?>
+            {{ include("sidebar.php") }}
             <!--panel de eventos-->
             <section id = "eventos">
                 <div class="container">
@@ -34,6 +24,6 @@
                 </div>
             </section>
         </main>
-        <?php include("footer.php");?>
-    </body>
-</html> 
+       {{ include("footer.php") }}
+
+{% endblock %}
