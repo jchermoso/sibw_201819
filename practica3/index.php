@@ -1,17 +1,26 @@
 <?php 
 
-include("src/db_connect.php");
-
-$mysqli = new Connect("usuario","lechuza","sibw");
-
-var_dump($mysqli);  
-
+//require_once "src/db_connect.php";
 require_once 'vendor/autoload.php';
-$loader = new \Twig\Loader\FilesystemLoader('template');
-$twig = new \Twig\Environment( $loader,[]);
-echo $twig->render('pruebaTemplate.html' ,
-    ['nombre' => 'Espinete' ,'edad' => 'Indefinida']);
 
+$link = mysqli_connect('127.0.0.1','usuario','lechuza','sibw');
+
+$select = "SELECT * FROM menu";
+$result = mysqli_query($link, $select);
+$i = 0;
+$vector = array();
+
+if ($result->num_rows > 0) {
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+        $vector[$i] = $row["nombre"];
+        $i++;
+    }
+}
+
+$loader = new \Twig\Loader\FilesystemLoader('templates');
+$twig = new \Twig\Environment( $loader,[]);
+
+echo $twig->render('portada.html',$vector);
 
 ?>
-
