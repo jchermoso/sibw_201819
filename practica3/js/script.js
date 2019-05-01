@@ -7,17 +7,17 @@ var palabras = ["puta", "gilipollas", "maricon", "polla", "retrasado", "idiota",
 //Hasta que no se cargue la página no se ejecuta la función
 window.onload = function () {
     document.getElementById("comentario").addEventListener("keyup", listenEvent);
-    //document.getElementById("comentario").addEventListener("click", validate);
+    document.getElementById("comentario").addEventListener("click", validate);
     document.getElementById("div").addEventListener("mouseover", enable)
     document.getElementById("form").addEventListener("submit", submit);
-    document.getElementByClassName("enlace").addEventListener("click", verEvento);
 }
 
 function verEvento(id, event){
      event.preventDefault();
-     document.getElementById("idEvento").setAttribute.val(id);
+    
+     document.getElementById("idEvento").value = id;
      document.getElementById("forEvento").action = "/evento";
-     document.getElementById("forEvento").submit;
+     document.getElementById("forEvento").submit();
  }
 
 function listenEvent(){

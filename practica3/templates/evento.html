@@ -4,20 +4,26 @@
         {{ include("sidebar.php") }}
 
         <section id = "principal">
-          <h1 id="id_evento" class="titulo">{{evento[0].nombre}}</h1>
+          <h1 id="id_evento" class="titulo">{{evento.nombre}}</h1>
           <article id="parrafo1" class="parrafo">
-            <b><p>Publicado el {{evento[0].fecha_publi}}</p></b>
+            <b><p>Publicado el {{evento.fecha_publi}}</p></b>
             {{ data|convert_encoding('UTF-8', 'iso-2022-jp') }}
-            {{evento[0].texto}}
+            {{evento.texto}}
           </article>
 
           {% for n in galeria %}
-            {% if n.id_evento == '1' and n.tipo != 'portada' %}
+            {% if n.id_evento == evento.id and n.tipo != 'portada' and n.tipo != 'video' %}
             <img src = '{{n.ruta}}' class="imgLK">
             {% endif %}
           {% endfor %}
-
-          <b><p>Última modificación: {{evento[0].fecha_mod}}</p></b>
+    
+          {% for n in galeria %}
+            {% if n.id_evento == evento.id and n.tipo == 'video' %}
+            <iframe width="900" height="506" src="{{n.ruta}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            {% endif %}
+        {% endfor %}
+            
+          <b><p>Última modificación: {{evento.fecha_mod}}</p></b>
 
           <div class="sociales">
               <a class="" href="https://www.facebook.com/" target="_blank"><img src="img/fb.png" alt="Logo Facebook"></a>

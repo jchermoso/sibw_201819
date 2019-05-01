@@ -41,6 +41,44 @@ class BD {
    return $vector;
   }
 
+function getEvento($id){
+        $select = "SELECT * FROM evento WHERE id=?";
+        
+        /* crear una sentencia preparada */
+        if ($stmt = mysqli_prepare($GLOBALS['enlace'], $select)) {
+
+        /* ligar parámetros para marcadores */
+        mysqli_stmt_bind_param($stmt, "i", $id);
+
+        /* ejecutar la consulta */
+        mysqli_stmt_execute($stmt);
+
+        /* ligar variables de resultado */
+        $meta = $stmt->result_metadata(); 
+        
+        while ($field = $meta->fetch_field()) { 
+            $params[] = &$row[$field->name]; 
+        } 
+
+        call_user_func_array(array($stmt, 'bind_result'), $params); 
+
+        while ($stmt->fetch()) { 
+            foreach($row as $key => $val) { 
+                $c[$key] = $val; 
+            } 
+            $result = $c;
+        } 
+
+        /* cerrar sentencia */
+        mysqli_stmt_close($stmt);
+    }
+
+    /* cerrar conexión */
+    mysqli_close($GLOBALS['enlace']);
+    
+    return $result;
+}
+
   function select_galeria() {
     $select = "SELECT * FROM galeria";
     $result = mysqli_query($GLOBALS['enlace'],$select);

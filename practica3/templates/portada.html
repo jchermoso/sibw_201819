@@ -6,8 +6,8 @@
             {{ include("sidebar.php") }}
             <!--panel de eventos-->
             <section id = "eventos">
-                {% for n in evento %}
-                <a href="" class = "enlace"><div class="container">
+                {% for n in eventos %}
+                <a href="" class = "enlace" onclick="verEvento({{n.id}}, event)"><div class="container">
                   {% for m in galeria if (m.id_evento == n.id) and (m.tipo == 'portada') %}
                     <img src='{{m.ruta}}' alt="Avatar" class="image" >
                   {% endfor %}
