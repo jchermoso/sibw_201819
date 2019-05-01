@@ -1,0 +1,24 @@
+{% extends 'base.html' %} {% block context %}
+        {{ include("header.php") }}
+        <!--zona principal-->
+        <main>
+            <!--panel auxiliar-->
+            {{ include("sidebar.php") }}
+            <!--panel de eventos-->
+            <section id = "eventos">
+                {% for n in evento %}
+                <a href="" class = "enlace"><div class="container">
+                  {% for m in galeria if (m.id_evento == n.id) and (m.tipo == 'portada') %}
+                    <img src='{{m.ruta}}' alt="Avatar" class="image" >
+                  {% endfor %}
+                  <div class="overlay">{{n.grupo}} </div>
+
+                </div></a>
+                <form id="forEvento" action="" method="POST" name="forEvento" hidden>
+                    <input id="idEvento" name="idEvento" value="">
+                </form>
+                {% endfor %}
+            </section>
+        </main>
+       {{ include("footer.php") }}
+{% endblock %}
