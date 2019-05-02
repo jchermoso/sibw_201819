@@ -174,6 +174,7 @@ main {
 }
 
 .imgLK{
+    width: 550px;
     float: right;
     padding: 2vh;
 }
@@ -271,6 +272,49 @@ padding: 2vh;
     color: black;
     font-size: 3vh;
 
+}
+.imp .parrafo{
+    column-count: 2;
+}
+
+/** pagina de contacto **/
+.contacto {
+    margin: auto;
+    text-align: center;
+    width: auto;
+}
+.contact_form input[type=text], 
+.contact_form input[type=email],
+.contact_form select,
+.contact_form textarea {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.contact_form .submit {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.contact_form .submit:hover {
+  background-color: #45a049;
+}
+
+.contact_form div {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
 }
 
 /**pie de página**/

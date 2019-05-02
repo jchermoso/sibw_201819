@@ -8,6 +8,11 @@
       <meta name="author" content="Juan Carlos Hermoso Quesada y Jonathan Ordóñez Cubero">
       <script type="text/javascript" src="js/script.js"></script>
       <link rel="stylesheet" href="css/estilo.css">
+      {% if error == 404 %}
+            <link rel="stylesheet" href="css/estilo404.css">
+      {% else %}
+            <link rel="stylesheet" href="css/estilo.css">
+      {% endif %}
     </head>
     <body>
         {% block context %}

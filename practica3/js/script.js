@@ -4,20 +4,27 @@ var textorempl = "";
 var textolisto = "";
 var palabras = ["puta", "gilipollas", "maricon", "polla", "retrasado", "idiota", "imbecil", "tonto", "subnormal", "capullo", "cabron"];
 
-//Hasta que no se cargue la página no se ejecuta la función
 window.onload = function () {
     document.getElementById("comentario").addEventListener("keyup", listenEvent);
-    document.getElementById("comentario").addEventListener("click", validate);
-    document.getElementById("div").addEventListener("mouseover", enable)
-    document.getElementById("form").addEventListener("submit", submit);
+    //document.getElementById("comentario").addEventListener("click", validate);
+    //document.getElementById("div").addEventListener("mouseover", enable)
+   // document.getElementById("form").addEventListener("submit", submit);
 }
 
 function verEvento(id, event){
      event.preventDefault();
     
      document.getElementById("idEvento").value = id;
-     document.getElementById("forEvento").action = "/evento";
-     document.getElementById("forEvento").submit();
+     document.getElementById("formEvento").action = "/evento";
+     document.getElementById("formEvento").submit();
+ }
+
+function imprimirEvento(id, event){
+     event.preventDefault();
+    
+     document.getElementById("idEvento").value = id;
+     document.getElementById("formImp").action = "/imprimir";
+     document.getElementById("formImp").submit();
  }
 
 function listenEvent(){
@@ -34,7 +41,7 @@ function listenEvent(){
     document.getElementById('comentario').value = comment;
 }
 
-function submit(event){
+/*function submit(event){
     event.preventDefault();
     document.getElementById('copy_values').style.display = "block";
     document.getElementById('copy_name').textContent  = document.getElementById('nombre').value;
@@ -43,7 +50,7 @@ function submit(event){
 
     document.getElementById('form').reset()
 }
-
+*/
 function validate(){
     var txtName = document.getElementById('nombre').value;
     var txtCorreo = document.getElementById('email').value;

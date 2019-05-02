@@ -40,6 +40,45 @@ class BD {
    }
    return $vector;
   }
+    
+function select_comentario($id) {
+    $result = array();    
+    $select = "SELECT * FROM comentarios WHERE id_evento=?";
+
+    /* crear una sentencia preparada */
+    if ($stmt = mysqli_prepare($GLOBALS['enlace'], $select)) {
+
+    /* ligar parámetros para marcadores */
+    mysqli_stmt_bind_param($stmt, "i", $id);
+
+    /* ejecutar la consulta */
+    mysqli_stmt_execute($stmt);
+
+    /* ligar variables de resultado */
+    $meta = $stmt->result_metadata();
+
+    while ($field = $meta->fetch_field()) {
+        $params[] = &$row[$field->name];
+    }
+
+    call_user_func_array(array($stmt, 'bind_result'), $params);
+
+    while ($stmt->fetch()) {
+        foreach($row as $key => $val) {
+            $c[$key] = $val;
+        }
+        $result[] = $c;
+    }
+    
+    /* cerrar sentencia */
+    //mysqli_stmt_close($stmt);
+  }
+    
+    /* cerrar conexión */
+    mysqli_close($GLOBALS['enlace']);
+    
+  return $result;
+}
 
 function getEvento($id){
         $select = "SELECT * FROM evento WHERE id=?";
@@ -74,7 +113,7 @@ function getEvento($id){
     }
 
     /* cerrar conexión */
-    mysqli_close($GLOBALS['enlace']);
+    //mysqli_close($GLOBALS['enlace']);
     
     return $result;
 }
@@ -94,9 +133,28 @@ function getEvento($id){
     }
     return $vector;
   }
-}
+    
+    function insert_comentario($nombre,$id,$comentario,$email,$fecha_hora,$ipAddress) {
+       $query = "INSERT INTO comentarios(id_evento,nombre,correo,fecha_hora,texto,ip_usuario) VALUES (?,?,?,?,?,?)";  
+        
+        /* crear una sentencia preparada */
+        if ($stmt = mysqli_prepare($GLOBALS['enlace'], $query)) {
 
-  function close() {
-    $GLOBALS['enlace'].close();
-  }
+        /* ligar parámetros para marcadores */
+            mysqli_stmt_bind_param($stmt, "isssss", $id,$nombre,$email,$fecha_hora,$comentario,$ipAddress);
+
+        /* ejecutar la consulta */
+            mysqli_stmt_execute($stmt);
+
+        /* cerrar sentencia */
+            mysqli_stmt_close($stmt);
+        }   
+
+    /* cerrar conexión */
+  //  mysqli_close($GLOBALS['enlace']);
+    
+    }
+  
+} 
+
 ?>

@@ -7,7 +7,6 @@
           <h1 id="id_evento" class="titulo">{{evento.nombre}}</h1>
           <article id="parrafo1" class="parrafo">
             <b><p>Publicado el {{evento.fecha_publi}}</p></b>
-            {{ data|convert_encoding('UTF-8', 'iso-2022-jp') }}
             {{evento.texto}}
           </article>
 
@@ -23,12 +22,14 @@
             {% endif %}
         {% endfor %}
             
-          <b><p>Última modificación: {{evento.fecha_mod}}</p></b>
-
+          <b><p>&Uacute;ltima modificaci&oacute;n: {{evento.fecha_mod}}</p></b>
           <div class="sociales">
               <a class="" href="https://www.facebook.com/" target="_blank"><img src="img/fb.png" alt="Logo Facebook"></a>
               <a class="" href="https://twitter.com" target="_blank"><img src="img/tw.jpg" alt="Logo Twitter"></a>
-              <a class="boton_personalizado" href="evento_imprimir.html" target="_blank">Imprimir</a>
+              <button class="boton_personalizado" onclick="imprimirEvento({{evento.id}}, event)">Imprimir</button>
+              <form id="formImp" action="" method="POST" name="formImp" hidden>
+                  <input id="idEvento" name="idEvento" value="">
+              </form>
           </div>
         </section>
 
@@ -36,7 +37,7 @@
         <a id="cerrar" class="abrir-cerrar boton_personalizado" href="#" onclick="ocultar()">Cerrar Comentarios</a>
         <section id="comment" class="comment">
             <article class="section">
-                <form id="form" action="#" method="POST">
+                <form id="form" action="/comentario" method="POST">
                     <div>
                         <label for="nombre">Nombre</label>
                         <input id="nombre" name="nombre" value="" type="text" required>
@@ -49,23 +50,21 @@
                         <label for="comentario">Introduce el comentario</label>
                         <textarea id="comentario" name="comentario" required></textarea>
                     </div>
+                    <input id="id" name="id" type="hidden" value="{{evento.id}}">
                     <div class="button">
                         <button type="submit">Enviar</button>
                     </div>
                 </form>
             </article>
-
-            <article id="comment1" class="section">
-                <p>Jhon</p>
-                <p>em@hotmail.es</p>
-                <p>El primer comentario.</p>
-            </article>
-
-            <article id="comment2" class="section">
-                <p>Sarah</p>
-                <p>sweet@gmail.com</p>
-                <p>Este grupo es el mejor. Repetir&eacute;</p>
-            </article>
+            
+            {% for n in comentarios if n.id_evento == evento.id %}
+                <article id="comment_{{n.id}}" class="section">
+                    <p>{{n.nombre}}</p>
+                    <p>{{n.correo}}</p>
+                    <p>{{n.texto}}</p>
+                    <p>Hora de publicación: {{n.fecha_hora}}</p>
+                </article>
+            {% endfor %}
 
             <article id="copy_values" class="section">
                 <p id="copy_name"></p>
@@ -76,4 +75,5 @@
 
     </main>
     {{ include("footer.php") }}
+
 {% endblock %}
