@@ -1,37 +1,38 @@
 {% extends 'base.html' %} {% block context %}
-    {{ include("header.php") }}
-    <main>
-        {{ include("sidebar.php") }}
 
-        <section id = "principal">
-          <h1 id="id_evento" class="titulo">{{evento.nombre}}</h1>
-          <article id="parrafo1" class="parrafo">
-            <b><p>Publicado el {{evento.fecha_publi}}</p></b>
-            {{evento.texto}}
-          </article>
+<!--zona principal-->
+<main>
+     {{ include("sidebar.html") }}
 
-          {% for n in galeria %}
+     <section id = "principal">
+       <h1 id="id_evento" class="titulo">{{evento.nombre}}</h1>
+       <article id="parrafo1" class="parrafo">
+         <b><p>Publicado el {{evento.fecha_publi}}</p></b>
+         {{evento.texto}}
+       </article>
+
+         {% for n in galeria %}
             {% if n.id_evento == evento.id and n.tipo != 'portada' and n.tipo != 'video' %}
-            <img src = '{{n.ruta}}' class="imgLK">
+                <img src = '{{n.ruta}}' class="imgLK">
             {% endif %}
-          {% endfor %}
-    
-          {% for n in galeria %}
+         {% endfor %}
+         
+         {% for n in galeria %}
             {% if n.id_evento == evento.id and n.tipo == 'video' %}
-            <iframe width="900" height="506" src="{{n.ruta}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe width="900" height="506" src="{{n.ruta}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             {% endif %}
         {% endfor %}
             
-          <b><p>&Uacute;ltima modificaci&oacute;n: {{evento.fecha_mod}}</p></b>
-          <div class="sociales">
-              <a class="" href="https://www.facebook.com/" target="_blank"><img src="img/fb.png" alt="Logo Facebook"></a>
-              <a class="" href="https://twitter.com" target="_blank"><img src="img/tw.jpg" alt="Logo Twitter"></a>
-              <button class="boton_personalizado" onclick="imprimirEvento({{evento.id}}, event)">Imprimir</button>
-              <form id="formImp" action="" method="POST" name="formImp" hidden>
-                  <input id="idEvento" name="idEvento" value="">
-              </form>
-          </div>
-        </section>
+         <b><p>&Uacute;ltima modificaci&oacute;n: {{evento.fecha_mod}}</p></b>
+         <div class="sociales">
+             <a class="" href="https://www.facebook.com/" target="_blank"><img src="img/fb.png" alt="Logo Facebook"></a>
+             <a class="" href="https://twitter.com" target="_blank"><img src="img/tw.jpg" alt="Logo Twitter"></a>
+             <button class="boton_personalizado" onclick="imprimirEvento({{evento.id}}, event)">Imprimir</button>
+             <form id="formImp" action="" method="POST" name="formImp" hidden>
+                 <input id="idEvento" name="idEvento" value="">
+             </form>
+         </div>
+    </section>
 
         <a id="abrir" class="abrir-cerrar boton_personalizado" href="#" onclick="mostrar()">Desplegar Comentarios</a>
         <a id="cerrar" class="abrir-cerrar boton_personalizado" href="#" onclick="ocultar()">Cerrar Comentarios</a>
@@ -74,6 +75,5 @@
         </section>
 
     </main>
-    {{ include("footer.php") }}
 
 {% endblock %}

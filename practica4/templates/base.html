@@ -15,8 +15,12 @@
       {% endif %}
     </head>
     <body>
+        <!--cabecera-->
+        {{ include("header.html") }}
         {% block context %}
 
         {% endblock %}
+        <!--pie de pagina-->
+        {{ include("footer.html") }}
     </body>
 </html>

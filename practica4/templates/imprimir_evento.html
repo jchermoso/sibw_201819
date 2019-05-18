@@ -1,8 +1,5 @@
 {% extends 'base.html' %} {% block context %}
-        <!--cabecera-->
-        {{ include("header.php") }}
         <!--zona principal-->
-
         <main {% if imprimir %} class="imp" {% endif %}>
 
             <!--zona principal del evento-->
@@ -32,6 +29,5 @@
           <b><p>&Uacute;ltima modificaci&oacute;n: {{evento.fecha_mod}}</p></b>
 
         </main>
-        <!--pie de pagina-->
-        {{ include("footer.php") }}
+
 {% endblock %}

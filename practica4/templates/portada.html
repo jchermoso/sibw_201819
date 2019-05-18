@@ -1,9 +1,9 @@
 {% extends 'base.html' %} {% block context %}
-        {{ include("header.php") }}
+
         <!--zona principal-->
         <main>
             <!--panel auxiliar-->
-            {{ include("sidebar.php") }}
+            {{ include("sidebar.html") }}
             <!--panel de eventos-->
             <section id = "eventos">
                 {% for n in eventos %}
@@ -20,5 +20,5 @@
                 {% endfor %}
             </section>
         </main>
-       {{ include("footer.php") }}
+
 {% endblock %}
