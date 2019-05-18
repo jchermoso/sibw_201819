@@ -278,6 +278,12 @@ padding: 2vh;
 }
 
 /** pagina de contacto **/
+.login{
+    margin: auto;
+    text-align: center;
+    width: auto
+}
+
 .contacto {
     margin: auto;
     text-align: center;

@@ -1,0 +1,24 @@
+{% extends 'base.html' %} {% block context %}
+    {{ include("header.php") }}
+    <main id="content">
+        <section class="login">
+            <form  class="contact_form" action="" method="POST" name="contact_form" novalidate>
+                <div>
+                    <h1>Login</h1>
+                </div>
+                <div>
+                    <label for="nombre">Nombre de usuario:</label>
+                    <input type="text" name="nombre" placeholder="Nombre de usuario"/>
+                </div>
+                <div>
+                    <label for="pass">Contraseña:</label>
+                    <input type="password" name="pass" placeholder="Contraseña"/>
+                </div>
+                <div>
+                    <button class="submit">Login</button>
+                </div>
+            </form>
+        </section>
+    </main>
+    {{ include("footer.php") }}
+{% endblock %}

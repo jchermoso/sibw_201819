@@ -18,7 +18,7 @@ switch ($request) {
         $renderparams["menu"] = $bd->select_menu();
         $renderparams["eventos"] = $bd->select_evento();
         $renderparams["galeria"] = $bd->select_galeria();
-
+        
         echo $twig->render('portada.html',$renderparams);
         break;
     case '/evento' :
@@ -54,6 +54,10 @@ switch ($request) {
         $renderparams["imprimir"] = TRUE;
     
         echo $twig->render('imprimir_evento.html', $renderparams);
+        break;
+    case '/login':
+        $renderparams["menu"] = $bd->select_menu();
+        echo $twig->render('login.html',$renderparams);
         break;
     default:
         $renderparams['error'] = 404;
