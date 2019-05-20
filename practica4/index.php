@@ -60,9 +60,15 @@ switch ($request) {
         echo $twig->render('imprimir_evento.html', $renderparams);
         break;
     case '/login':
+        if (isset($_POST["nombre"]) && isset($_POST["pass"])) {
+            $nombre = isset($_POST["nombre"]);
+            $pass = isset($_POST["pass"]);
+            
+            $bd->select_usuarios($nombre,$pass);
+        }
+            
         $renderparams["menu"] = $bd->select_menu();
-        echo $twig->render('login.php',$renderparams);
-        
+        echo $twig->render('login.html',$renderparams);
         break;
     case '/registro':
         if (isset($_POST["nombre"]) && isset($_POST["email"]) && isset($_POST["pass"])) {
@@ -74,7 +80,6 @@ switch ($request) {
         }
     
         $renderparams["menu"] = $bd->select_menu();
-        $renderparams["usuarios"] = $bd->select_usuarios();
         
         echo $twig->render('registro.html',$renderparams);
         break;
