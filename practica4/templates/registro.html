@@ -1,22 +1,26 @@
 {% extends 'base.html' %} {% block context %}
     <main id="content">
         <section class="login">
-            <form  class="contact_form" action="" method="POST" name="contact_form" novalidate>
+            <form  class="contact_form" action="/registro" method="POST" name="contact_form" novalidate>
                 <div>
-                    <h1>Login</h1>
+                    <h1>Regístrate</h1>
                 </div>
                 <div>
                     <label for="nombre">Nombre de usuario:</label>
                     <input type="text" name="nombre" placeholder="Nombre de usuario"/>
                 </div>
                 <div>
+                    <label for="nombre">Correo:</label>
+                    <input type="email" name="email" placeholder="Correo"/>
+                </div>
+                <div>
                     <label for="pass">Contraseña:</label>
                     <input type="password" name="pass" placeholder="Contraseña"/>
                 </div>
                 <div>
-                    <button class="submit">Login</button>
+                    <button class="submit">Registrarse</button>
                 </div>
             </form>
         </section>
     </main>
-{% endblock %} 
+{% endblock %}

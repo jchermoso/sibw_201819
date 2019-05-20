@@ -2,10 +2,10 @@
 -- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 18-05-2019 a las 11:01:32
+-- Servidor: localhost
+-- Tiempo de generación: 20-05-2019 a las 17:27:17
 -- Versión del servidor: 10.1.38-MariaDB
--- Versión de PHP: 7.3.2
+-- Versión de PHP: 7.3.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -153,7 +153,8 @@ INSERT INTO `menu` (`id`, `nombre`, `ruta`) VALUES
 (1, 'Home', '/'),
 (2, 'Eventos', '/listado'),
 (3, 'Contacto', '/contacto'),
-(4, 'Sobre nosotros', '/nosotros');
+(4, 'Sobre nosotros', '/nosotros'),
+(5, 'Login', '/login');
 
 -- --------------------------------------------------------
 
@@ -172,6 +173,29 @@ CREATE TABLE `prohibidas` (
 
 INSERT INTO `prohibidas` (`id`, `palabra`) VALUES
 (1, 'japuta');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuarios`
+--
+
+CREATE TABLE `usuarios` (
+  `id` int(10) NOT NULL,
+  `nick` varchar(20) NOT NULL,
+  `pass` varchar(50) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `descripcion` varchar(500) NOT NULL,
+  `tipo` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`id`, `nick`, `pass`, `email`, `descripcion`, `tipo`) VALUES
+(1, 'hola', 'tete', 'dwd@as.com', '', 'registrado'),
+(2, 'buenorra_atarfe', 'juanca', 'buenorra_atarfe@gmail.com', '', 'registrado');
 
 --
 -- Índices para tablas volcadas
@@ -216,6 +240,12 @@ ALTER TABLE `prohibidas`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -247,13 +277,19 @@ ALTER TABLE `galeria`
 -- AUTO_INCREMENT de la tabla `menu`
 --
 ALTER TABLE `menu`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `prohibidas`
 --
 ALTER TABLE `prohibidas`
   MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Restricciones para tablas volcadas

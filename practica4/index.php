@@ -1,4 +1,8 @@
 <?php
+if(!isset($_SESSION)) {
+  session_start();
+}
+
 require_once 'vendor/autoload.php';
 require_once 'modelo/modelo.php';
 
@@ -57,10 +61,28 @@ switch ($request) {
         break;
     case '/login':
         $renderparams["menu"] = $bd->select_menu();
-        echo $twig->render('login.html',$renderparams);
+        echo $twig->render('login.php',$renderparams);
+        
         break;
+    case '/registro':
+        if (isset($_POST["nombre"]) && isset($_POST["email"]) && isset($_POST["pass"])) {
+            $nombre = $_POST["nombre"];
+            $email = $_POST["email"];
+            $pass = $_POST["pass"];
+        
+            $bd->insert_usuarios($nombre,$email,$pass);
+        }
+    
+        $renderparams["menu"] = $bd->select_menu();
+        $renderparams["usuarios"] = $bd->select_usuarios();
+        
+        echo $twig->render('registro.html',$renderparams);
+        break;
+    
     default:
         $renderparams['error'] = 404;
+        
+        
         echo $twig->render('404.html', $renderparams);
         break;
 }

@@ -135,7 +135,7 @@ function getEvento($id){
   }
     
     function insert_comentario($nombre,$id,$comentario,$email,$fecha_hora,$ipAddress) {
-       $query = "INSERT INTO comentarios(id_evento,nombre,correo,fecha_hora,texto,ip_usuario) VALUES (?,?,?,?,?,?)";  
+        $query = "INSERT INTO comentarios(id_evento,nombre,correo,fecha_hora,texto,ip_usuario) VALUES (?,?,?,?,?,?)";  
         
         /* crear una sentencia preparada */
         if ($stmt = mysqli_prepare($GLOBALS['enlace'], $query)) {
@@ -151,10 +151,43 @@ function getEvento($id){
         }   
 
     /* cerrar conexión */
-  //  mysqli_close($GLOBALS['enlace']);
-    
+    //  mysqli_close($GLOBALS['enlace']);
+
     }
-  
+    
+
+    function select_usuarios() {
+        $select = "SELECT * FROM usuarios";
+        $result = mysqli_query($GLOBALS['enlace'],$select);
+        $i = 0;
+        $vector = array();
+
+        if ($result->num_rows > 0) {
+            // output data of each row
+            while($row = $result->fetch_assoc()) {
+                $vector[$i] = $row;
+                $i++;
+            }
+        }
+        return $vector;
+    }
+    
+     function insert_usuarios($nombre,$email,$pass) {
+         $query = "INSERT INTO usuarios (nick, email, pass,tipo) VALUES (?,?,?,?)";
+         if ($stmt = mysqli_prepare($GLOBALS['enlace'], $query)) {
+            
+            $tipo = "registrado";   
+            mysqli_stmt_bind_param($stmt, "ssss", $nombre,$email,$pass,$tipo);
+
+            mysqli_stmt_execute($stmt);
+
+            mysqli_stmt_close($stmt);
+            
+            echo "¡Usuario registrado con éxito!";
+            header("Refresh:1; url=/");
+        }   
+    }
+    
 } 
 
 ?>
