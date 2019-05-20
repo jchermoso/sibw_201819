@@ -1,0 +1,36 @@
+{% extends 'base.html' %} {% block context %}
+
+{{ include("header.php") }}
+
+<main id="content">
+    <section class="contacto">
+        <form  id="formContacto" class="contact_form" action="" method="POST" name="contact_form" novalidate>
+            <div>
+                <h1>Formulario de Contacto</h1>
+            </div>
+            <div>
+                <label for="name">Nombre:</label>
+                <input type="text" name="nombre" placeholder="Escribe tu nombre"/>
+            </div>
+            <div>
+                <label for="email">Email:</label>
+                <input type="email" name="email" placeholder="Escribe tu correo"/>
+            </div>
+            <div>
+                <label for="subject">Asunto:</label>
+                <input type="text" name="asunto" placeholder="Escribe tu motivo"/>
+            </div>
+            <div>
+                <label for="message">Mensaje:</label>
+                <textarea type="textarea" name="mensaje" cols="40" rows="6" placeholder="Descripción detallada del motivo de consulta"></textarea>
+            </div>
+            <div>
+                <button class="submit"  >Enviar</button>
+            </div>
+        </form>
+    </section>
+</main>
+
+{{ include("footer.php") }}
+
+{% endblock %}

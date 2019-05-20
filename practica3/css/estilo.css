@@ -1,0 +1,328 @@
+/**formato general de la página**/
+/****/
+*{
+    margin:0;
+    padding: 0;
+
+}
+
+/**formato de la cabecera**/
+header {
+    height: 30vh;
+    background-color: antiquewhite;
+}
+
+header img {
+    position: absolute;
+    height: 22vh;
+    margin-top: 3vh;
+    margin-left: 44%;
+}
+
+header h1 {
+    padding-top: 7vh;
+    font-size: 15vh;
+    color: black;
+    text-align: center;
+}
+/**formato del menú**/
+header ul {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    text-align: center;
+    padding-top: 2vh;
+    font-family: sans-serif;
+}
+
+header ul li {
+    width:100%;
+}
+/**link sin decoración**/
+li a {
+    text-decoration: none;
+}
+/**link visitado**/
+li a:visited {
+    color:black;
+}
+/**formato del main portada**/
+main {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    box-sizing: border-box;
+    background-color: gainsboro;
+}
+/**formato del panel auxiliar**/
+.panel {
+    display:flex;
+    flex-direction: column;
+    width: 25%;
+    text-align: center;
+    background-color: azure;
+    margin-left: 5vh;
+    font-family: monospace;
+    margin-top: 3vh;
+}
+.panel img {
+    width: 60%;
+    padding-top: 20vh;
+}
+/**formato del cartel del botón**/
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: #555;
+  color: white;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  opacity: 0;
+  transition: opacity 0.3s;
+  margin-top: 10vh;
+  right: 10vh;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+/**formato del panel de eventos**/
+#eventos {
+    display:flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: auto;
+    margin-left: 10vh
+}
+
+/**div en el que se encierra el link, la imagen y el texto**/
+.container {
+  position: relative;
+  width: 70vh;
+  height: 50vh;
+  margin-top: 3vh;
+  margin-left: 3vh;
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+/**efecto especial del evento y el titulo del evento**/
+.overlay {
+  position: absolute;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8); /* Black see-through */
+  color: #f1f1f1;
+  width: 100%;
+  transition: .5s ease;
+  opacity:0;
+  color: white;
+  font-size: 15vh;
+  text-align: center;
+  height: 100%;
+  overflow: hidden;
+}
+
+.container:hover .overlay {
+  opacity: 1;
+}
+
+/**formato página evento**/
+#principal {
+    height: auto;
+    margin-left: 10vh;
+    width: 100%;
+    text-align: center;
+}
+
+.titulo {
+    font-size: xx-large;
+    padding: 2vh 0 1vh 0;
+}
+
+.organizador{
+    font-size: x-large;
+    font-weight: bold;
+    padding: 1vh 2vh;
+}
+
+.fecha{
+    font-size: large;
+    padding: 2vh 0;
+}
+
+.imgLK{
+    width: 550px;
+    float: right;
+    padding: 2vh;
+}
+
+.parrafo{
+    padding: 5vh 0;
+    font-size: 2.5vh;
+
+}
+/** botón y sección comentarios **/
+#abrir{
+    display: inline-table;
+}
+
+#cerrar {
+    display: none;
+}
+
+.section {
+    padding-bottom: 10px;
+    border-bottom-style: ridge;
+    border-bottom-color: aqua;
+}
+
+#copy_values {
+    display: none;
+}
+
+.comment{
+    background-color: aliceblue;
+    display: none;
+    padding: 10px;
+}
+
+/** formato formulario **/
+#form{
+    box-sizing: border-box;
+    padding: 5px;
+    border-style: dashed;
+    border-width: 7px;
+    border-color: black;
+}
+
+input[type=text], select, textarea {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+
+/**estilo botones sociales**/
+.sociales {
+padding: 2vh;
+}
+
+.sociales a img{
+    width: 50px;
+    padding: 0 1vh;
+}
+
+.boton_personalizado{
+    text-decoration: none;
+    margin: 0 0 2vh 0;
+    font-weight: 600;
+    font-size: 20px;
+    color: #ffffff;
+    background-color: #1883ba;
+    border-radius: 6px;
+    border: 2px solid #0016b0;
+  }
+
+.boton_personalizado:hover{
+    color: #1883ba;
+    background-color: #ffffff;
+  }
+#conoce{
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+/**CSS para formatear la página imprimir**/
+.oculto {
+    display: none;
+}
+.pos_imp{
+    position: absolute;
+    height: 22vh;
+    margin-top: 3vh;
+    margin-left: 22.8vh;
+}
+.imp{
+    background-color: white;
+    color: black;
+    font-size: 3vh;
+
+}
+.imp .parrafo{
+    column-count: 2;
+}
+
+/** pagina de contacto **/
+.contacto {
+    margin: auto;
+    text-align: center;
+    width: auto;
+}
+.contact_form input[type=text], 
+.contact_form input[type=email],
+.contact_form select,
+.contact_form textarea {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.contact_form .submit {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.contact_form .submit:hover {
+  background-color: #45a049;
+}
+
+.contact_form div {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+/**pie de página**/
+footer {
+    text-align: center;
+    background-color: antiquewhite;
+    font-family: monospace;
+    height: 10vh;
+    padding-top: 5vh;
+    font-size:2.5vh;
+}

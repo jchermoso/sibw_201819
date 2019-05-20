@@ -55,6 +55,10 @@ switch ($request) {
     
         echo $twig->render('imprimir_evento.html', $renderparams);
         break;
+    case '/login':
+        $renderparams["menu"] = $bd->select_menu();
+        echo $twig->render('login.html',$renderparams);
+        break;
     default:
         $renderparams['error'] = 404;
         echo $twig->render('404.html', $renderparams);

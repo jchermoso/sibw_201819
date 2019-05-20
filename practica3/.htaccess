@@ -1,0 +1,22 @@
+# Restricted access to files
+<FilesMatch "((\.(lock|cache|db))|CHANGELOG.md|README.md|^(.*\.config|.*\.example)(.*?))$">
+	# Apache < 2.3
+	<IfModule !mod_authz_core.c>
+		Order allow,deny
+		Deny from all
+		Satisfy All
+	</IfModule>
+
+    # Apache ≥ 2.3
+    <IfModule mod_authz_core.c>
+	   Require all denied
+    </IfModule>
+</FilesMatch>
+
+RewriteEngine On
+RewriteBase /
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.+)$ index.php [QSA,L]
+
+RedirectMatch 404 /templates

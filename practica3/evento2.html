@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+      <title>SALA TEABAG</title>
+      <meta charset="utf-8">
+      <meta name="description" content="Práctica de la asignatura SIBW">
+      <meta name="keywords" content="HTML,CSS,JavaScript">
+      <meta name="author" content="Juan Carlos Hermoso Quesada y Jonathan Ordóñez Cubero">
+      <link rel="stylesheet" href="css/estilo.css">
+      <script type="text/javascript" src="js/script.js"></script>
+  </head>
+    <body>
+        <!--cabecera-->
+        <header>
+            <img src = "img/logo.svg">
+            <h1>SALA TEABAG</h1>
+             <ul>
+              <!--menu-->
+              <li><a href="portada.html">Home</a></li>
+              <li><a href="#">Eventos</a></li>
+              <li><a href="#">Contacto</a></li>
+              <li><a href="#">Sobre nosotros</a></li>
+            </ul> 
+        </header>
+        <!--zona principal-->
+        <main>
+            <!--panel auxiliar-->
+            <aside id = "aux" class="panel">
+                <!--link dentro de imagen-->
+                <div class = "tooltip"><a href="http://www.ticketea.com" target = "blank"><span class="tooltiptext">Venta de tickets</span><img src="img/logoTKT_blanco_naranja11.png" alt="logo tiketea"></a></div>
+                <div class = "tooltip"><span class="tooltiptext">Agenda</span><img src="img/calendar-512.png" alt="Calendario"></div>
+                <div class = "tooltip"><span class="tooltiptext">Instalaciones</span><img src ="img/63720.png" alt="Instalaciones"></div>
+            </aside>
+            <!--zona principal del evento-->
+            <section id = "principal">
+                <h1 id="id_evento" class="titulo">Concierto solidario Linkin Park</h1>
+                <p id="organizador" class="organizador">Linkin Park</p>
+                <p id="fecha" class="fecha">Pr&oacute;ximo viernes 22 de Marzo a las 20h</p>
+
+                <article id="parrafo1" class="parrafo">
+                    <img src="img/lk_1.jpg" class="imgLK" alt="Concierto Linkin Park">
+                    <p>Linkin Park es una banda estadounidense de rock alternativo procedente de Agoura Hills, California. Formada en 1996, el grupo estuvo inicialmente integrado por Mike Shinoda, Dave Farrell, Joe Hahn, Brad Delson, Rob Bourdon y Mark Wakefield, este &uacute;ltimo como voz principal. La banda inici&oacute; en ese mismo año sus primeros trabajos musicales de manera independiente y posterior a esto grabaron su primer material llamado Xero; sin embargo no tuvieron gran &eacute;xito en la b&uacute;squeda de un sello discogr&aacute;fico ya que nadie mostr&oacute; inter&eacute;s por su trabajo, lo que ocasion&oacute; la renuncia de Mark Wakefield. Poco despu&eacute;s, Chester Bennington se incorpor&oacute; a la banda como vocalista; el grupo realiz&oacute; su primera presentaci&oacute;n en un club de Los Ángeles y siendo respaldados por Jeff Blue, en aquel entonces vicepresidente de Warner Bros. Records, lograron firmar con el sello en 1999. El nombre del grupo es un juego de palabras que hace referencia al Lincoln Park en Santa M&oacute;nica.</p>
+                </article>
+                <article id="parrafo2" class="parrafo">
+                    <img src="img/lk_2.jpg" class="imgLK" alt="Concierto Linkin Park 2">
+                    <p id="parrafo2">El &eacute;xito comercial de Linkin Park lleg&oacute; posterior al lanzamiento de Hybrid Theory, publicado el 24 de octubre de 2000. Con esto el grupo gan&oacute; reconocimiento internacional al hacerse acreedor a los premios más importantes de la industria musical, habiendo ganado su primer premio Grammy en 2002 por la mejor interpretación hard rock gracias al sencillo «Crawling». La agrupaci&oacute;n lanz&oacute; su segundo &aacute;lbum, Meteora, que vendi&oacute; m&aacute;s de 810 000 copias en su primera semana en el mercado, y as&iacute; logr&oacute; ubicarse en los primeros puestos de las listas de popularidad de la revista Billboard. «Breaking the Habit», sexto sencillo de este disco gan&oacute; en la categor&iacute;a video de m&uacute;sica favorito en los MTV Asia Award, «Somewhere I Belong», tambi&eacute;n perteneciente a ese disco se llev&oacute; un galard&oacute;n en los MTV Video Music Awards de 2003 en la categoría mejor video musical de rock. Al año siguiente el grupo se reuni&oacute; con Jay-Z para la producci&oacute;n del &aacute;lbum Collision Course del cual el tema «Numb/Encore» se hizo acreedor al premio Grammy en la categoría mejor colaboraci&oacute;n de rap/cantada en el año 2006.</p>
+                    <p>El Concierto Solidario del grupo <a id="conoce" href="https://linkinpark.com" target="_blank">Linkin Park</a>, se celebrará en la sala TeaBag, Granada. Concierto donde el grupo interpretará varias piezas, entre ellas la popular "Numb".Si quieres conseguir una entrada y colaborar con está iniciativa solidaria, compre las entradas y siganos en las redes sociales.</p>
+                </article>
+                
+                <div class="sociales">
+                    <a class="" href="https://www.facebook.com/" target="_blank"><img src="img/fb.png" alt="Logo Facebook"></a>
+                    <a class="" href="https://twitter.com" target="_blank"><img src="img/tw.jpg" alt="Logo Twitter"></a>
+                    <a class="boton_personalizado" href="evento_imprimir.html" target="_blank">Imprimir</a>
+                </div>
+            </section>
+            <!-- Comentarios -->
+            <a id="abrir" class="abrir-cerrar boton_personalizado" href="#" onclick="mostrar()">Desplegar Comentarios</a>
+            <a id="cerrar" class="abrir-cerrar boton_personalizado" href="#" onclick="ocultar()">Cerrar Comentarios</a>
+                
+            <section id="comment" class="comment">                
+                <article class="section">
+                    <form id="form" action="#" method="POST">
+                        <div>
+                            <label for="nombre">Nombre</label>
+                            <input id="nombre" name="nombre" value="" type="text" required>                            
+                        </div>
+                        <div>
+                            <label for="email">E-mail</label>
+                            <input id="email" name="email" value="" type="email" required>
+                        </div>
+                        <div id="div">
+                            <label for="comentario">Introduce el comentario</label>
+                            <textarea id="comentario" name="comentario" required></textarea>
+                        </div>
+                        <div class="button">
+                            <button type="submit">Enviar</button>
+                        </div>
+                    </form>
+                </article>
+                
+                <article id="comment1" class="section">
+                    <p>Jhon</p>
+                    <p>em@hotmail.es</p>
+                    <p>El primer comentario.</p>
+                </article>
+                              
+                <article id="comment2" class="section">
+                    <p>Sarah</p>
+                    <p>sweet@gmail.com</p>
+                    <p>Este grupo es el mejor. Repetir&eacute;</p>
+                </article>
+                
+                <article id="copy_values" class="section">                    
+                    <p id="copy_name"></p>
+                    <p id="copy_email"></p>
+                    <p id="copy_comment"></p>
+                </article>                
+            </section>
+        </main>
+        <!--pie de pagina-->
+        <footer>
+            <p>© 2019 - Jonathan Ord&oacute;ñez Cubero - Juan Carlos Hermoso Quesada</p>
+        </footer>
+    </body>
+</html>
