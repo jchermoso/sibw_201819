@@ -29,6 +29,7 @@ switch ($request) {
         $id = $_POST["idEvento"];
         $renderparams["menu"] = $bd->select_menu();
         $renderparams["evento"] = $bd->getEvento($id);
+        $renderparams["eventos"] = $bd->select_evento();
         $renderparams["galeria"] = $bd->select_galeria();
         $renderparams["comentarios"] = $bd->select_comentario($id);
         
@@ -36,6 +37,7 @@ switch ($request) {
         break;
     case '/contacto':
         $renderparams["menu"] = $bd->select_menu();
+        $renderparams["eventos"] = $bd->select_evento();
         
         echo $twig->render('contacto.html', $renderparams);
         break;
@@ -61,8 +63,9 @@ switch ($request) {
         break;
     case '/login':
         $renderparams["menu"] = $bd->select_menu();
+        $renderparams["eventos"] = $bd->select_evento();
+
         echo $twig->render('login.php',$renderparams);
-        
         break;
     case '/registro':
         if (isset($_POST["nombre"]) && isset($_POST["email"]) && isset($_POST["pass"])) {
@@ -74,6 +77,7 @@ switch ($request) {
         }
     
         $renderparams["menu"] = $bd->select_menu();
+        $renderparams["eventos"] = $bd->select_evento();
         $renderparams["usuarios"] = $bd->select_usuarios();
         
         echo $twig->render('registro.html',$renderparams);
@@ -81,8 +85,7 @@ switch ($request) {
     
     default:
         $renderparams['error'] = 404;
-        
-        
+
         echo $twig->render('404.html', $renderparams);
         break;
 }

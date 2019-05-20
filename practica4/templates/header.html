@@ -1,10 +1,20 @@
 <header {% if imprimir %} class="imp" {% endif %}>
     <img src = "img/logo.svg" {% if imprimir %} class="pos_imp" {% endif %}>
     <h1>SALA TEABAG</h1>
-    <ul {%if imprimir %} class="oculto" {% endif%}>
+    <ul class="nav {%if imprimir %} oculto {% endif%}">
         <!--menu-->
         {% for n in menu %}
-            <li><a href='{{n.ruta}}'>{{n.nombre}}</a></li>
+        <li><a href='{{n.ruta}}'>{{n.nombre}}</a>
+            {% if n.nombre == 'Eventos' %}
+                <ul>
+                    {% for e in eventos %}
+                        <li><a href="/evento?id={{e.id}}">{{e.nombre}}</a> </li>
+                    {% endfor %}
+                </ul>
+            {% elseif n.nombre == 'Panel'%}
+
+            {% endif %}
+        </li>
         {% endfor %}
     </ul>
 </header>
