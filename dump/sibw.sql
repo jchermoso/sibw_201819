@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 20-05-2019 a las 17:27:17
+-- Tiempo de generación: 20-05-2019 a las 18:28:42
 -- Versión del servidor: 10.1.38-MariaDB
 -- Versión de PHP: 7.3.4
 
@@ -195,7 +195,8 @@ CREATE TABLE `usuarios` (
 
 INSERT INTO `usuarios` (`id`, `nick`, `pass`, `email`, `descripcion`, `tipo`) VALUES
 (1, 'hola', 'tete', 'dwd@as.com', '', 'registrado'),
-(2, 'buenorra_atarfe', 'juanca', 'buenorra_atarfe@gmail.com', '', 'registrado');
+(2, 'buenorra_atarfe', 'juanca', 'buenorra_atarfe@gmail.com', '', 'registrado'),
+(3, 'maikel', 'maikel', 'maikel@maikel.es', '', 'registrado');
 
 --
 -- Índices para tablas volcadas
@@ -289,7 +290,7 @@ ALTER TABLE `prohibidas`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Restricciones para tablas volcadas

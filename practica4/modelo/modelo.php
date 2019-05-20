@@ -156,20 +156,25 @@ function getEvento($id){
     }
     
 
-    function select_usuarios() {
-        $select = "SELECT * FROM usuarios";
-        $result = mysqli_query($GLOBALS['enlace'],$select);
-        $i = 0;
-        $vector = array();
+    function select_usuarios($nombre,$pass) {
+        $result = array();    
+        $select = "SELECT * FROM usuarios WHERE nick=? and pass=?";
 
-        if ($result->num_rows > 0) {
-            // output data of each row
-            while($row = $result->fetch_assoc()) {
-                $vector[$i] = $row;
-                $i++;
+        /* crear una sentencia preparada */
+        if ($stmt = mysqli_prepare($GLOBALS['enlace'], $select)) {
+
+            /* ligar parámetros para marcadores */
+            mysqli_stmt_bind_param($stmt, "ss", $nombre, $pass);
+
+            /* ejecutar la consulta */
+            mysqli_stmt_execute($stmt);
+            
+            if ($stmt) {
+                echo "¡Usuario identificado con éxito!";
+                header("Refresh:1; url=/");
             }
+        
         }
-        return $vector;
     }
     
      function insert_usuarios($nombre,$email,$pass) {
