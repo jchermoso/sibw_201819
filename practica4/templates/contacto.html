@@ -1,9 +1,9 @@
 {% extends 'base.html' %} {% block context %}
-        
+
 <!--zona principal-->
 <main id="content">
     <section class="contacto">
-        <form  id="formContacto" class="contact_form" action="" method="POST" name="contact_form" novalidate>
+        <form id="formContacto" class="contact_form" action="" method="POST" name="contact_form" novalidate>
             <div>
                 <h1>Formulario de Contacto</h1>
             </div>
@@ -21,10 +21,11 @@
             </div>
             <div>
                 <label for="message">Mensaje:</label>
-                <textarea type="textarea" name="mensaje" cols="40" rows="6" placeholder="Descripción detallada del motivo de consulta"></textarea>
+                <textarea type="textarea" name="mensaje" cols="40" rows="6"
+                          placeholder="Descripción detallada del motivo de consulta"></textarea>
             </div>
             <div>
-                <button class="submit"  >Enviar</button>
+                <button class="submit">Enviar</button>
             </div>
         </form>
     </section>

@@ -8,7 +8,7 @@ date_default_timezone_set('Europe/Madrid');
 $renderparams = [];
 
 $loader = new \Twig\Loader\FilesystemLoader('templates');
-$twig = new \Twig\Environment( $loader,[]);
+$twig = new \Twig\Environment($loader, []);
 
 $request = $_SERVER['REQUEST_URI'];
 
@@ -19,7 +19,7 @@ switch ($request) {
         $renderparams["eventos"] = $bd->select_evento();
         $renderparams["galeria"] = $bd->select_galeria();
 
-        echo $twig->render('portada.html',$renderparams);
+        echo $twig->render('portada.html', $renderparams);
         break;
     case '/evento' :
         $id = $_POST["idEvento"];
@@ -27,12 +27,12 @@ switch ($request) {
         $renderparams["evento"] = $bd->getEvento($id);
         $renderparams["galeria"] = $bd->select_galeria();
         $renderparams["comentarios"] = $bd->select_comentario($id);
-        
-        echo $twig->render('evento.html',$renderparams);
+
+        echo $twig->render('evento.html', $renderparams);
         break;
     case '/contacto':
         $renderparams["menu"] = $bd->select_menu();
-        
+
         echo $twig->render('contacto.html', $renderparams);
         break;
     case '/comentario':
@@ -40,19 +40,19 @@ switch ($request) {
         $idEvento = $_POST["id"];
         $comentario = $_POST["comentario"];
         $email = $_POST["email"];
-        $fecha_hora =  date(DATE_RFC2822);
+        $fecha_hora = date(DATE_RFC2822);
         $ipAddress = $_SERVER['REMOTE_ADDR'];
-        
-        $bd->insert_comentario($nombre,$idEvento,$comentario,$email,$fecha_hora,$ipAddress);
+
+        $bd->insert_comentario($nombre, $idEvento, $comentario, $email, $fecha_hora, $ipAddress);
         header('Location: /');
         break;
     case '/imprimir':
         $id = $_POST["idEvento"];
         $renderparams["menu"] = $bd->select_menu();
         $renderparams["evento"] = $bd->getEvento($id);
-        $renderparams["galeria"] = $bd->select_galeria();        
+        $renderparams["galeria"] = $bd->select_galeria();
         $renderparams["imprimir"] = TRUE;
-    
+
         echo $twig->render('imprimir_evento.html', $renderparams);
         break;
     default:
