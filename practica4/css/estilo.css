@@ -283,6 +283,12 @@ padding: 2vh;
     text-align: center;
     width: auto;
 }
+
+.login {
+    margin: auto;
+    text-align: center;
+    width: auto;
+}
 .contact_form input[type=text], 
 .contact_form input[type=email],
 .contact_form select,
