@@ -1,0 +1,33 @@
+{% extends 'base.html' %} {% block context %}
+        <!--zona principal-->
+        <main {% if imprimir %} class="imp" {% endif %}>
+
+            <!--zona principal del evento-->
+            <section id = "principal">
+                          <h1 id="id_evento" class="titulo">{{evento.nombre}}</h1>
+          <article id="parrafo1" class="parrafo">
+            <b><p>Publicado el {{evento.fecha_publi}}</p></b>
+            {{evento.texto}}
+          </article>
+
+          {% for n in galeria %}
+            {% if n.id_evento == evento.id and n.tipo != 'portada' and n.tipo != 'video' %}
+                <div>
+                    <img src = '{{n.ruta}}' class="img">
+                </div>
+            {% endif %}
+          {% endfor %}
+    
+          {% for n in galeria %}
+            {% if n.id_evento == evento.id and n.tipo == 'video' %}
+                <div>
+                    <a href="{{n.ruta}}" target="_blank">Enlace al video</a>
+                </div>
+            {% endif %}
+        {% endfor %}
+            
+          <b><p>&Uacute;ltima modificaci&oacute;n: {{evento.fecha_mod}}</p></b>
+
+        </main>
+
+{% endblock %}
