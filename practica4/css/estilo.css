@@ -14,7 +14,7 @@ header {
 
 header img {
     position: absolute;
-    height: 22vh;
+    height: 20vh;
     margin-top: 3vh;
     margin-left: 44%;
 }
@@ -32,6 +32,7 @@ header h1 {
 .nav a {
     border: none;
     outline: none;
+    z-index: 999999;
 }
 
 .nav {
