@@ -8,7 +8,7 @@
             {% if n.nombre == 'Eventos' %}
                 <ul>
                     {% for e in eventos %}
-                        <li><a href="/evento?id={{e.id}}">{{e.nombre}}</a> </li>
+                        <li><a href="" onclick="verEvento({{e.id}}, event)">{{e.nombre}}</a> </li>
                     {% endfor %}
                 </ul>
             {% elseif n.nombre == 'Panel'%}
