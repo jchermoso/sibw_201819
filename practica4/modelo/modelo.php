@@ -1,5 +1,6 @@
 <?php
-require_once("modelo.php");
+require_once "modelo.php";
+require_once "session.php";
 
 $enlace = mysqli_connect("127.0.0.1", "usuario", "lechuza", "sibw");
 
@@ -156,28 +157,47 @@ function getEvento($id){
     }
     
 
-    function select_usuarios($nombre,$pass) {
-        $result = array();    
-        $select = "SELECT * FROM usuarios WHERE nick=? and pass=?";
+    function login($nombre,$pass) {
+        /*$result = array();    
+        $select = "SELECT * FROM usuarios WHERE nick=? AND pass=?";
 
-        /* crear una sentencia preparada */
         if ($stmt = mysqli_prepare($GLOBALS['enlace'], $select)) {
 
-            /* ligar parámetros para marcadores */
-            mysqli_stmt_bind_param($stmt, "ss", $nombre, $pass);
+            mysqli_stmt_bind_param($stmt, "ss", $nombre, $pass);     
 
-            /* ejecutar la consulta */
             mysqli_stmt_execute($stmt);
             
-            if ($stmt) {
+            var_dump($stmt);
+            
+            if ($stmt->num_rows > 0) {
                 echo "¡Usuario identificado con éxito!";
                 header("Refresh:1; url=/");
             }
-        
+            else {
+                echo "Usuario inexistente";
+                header("Refresh:1; url=/login");
+            }
+        }*/
+        $select = "SELECT * FROM usuarios WHERE nick='$nombre' AND pass='$pass'";
+        $result = mysqli_query($GLOBALS['enlace'], $select);
+        $row = mysqli_fetch_array($result);
+               
+        if ($result->num_rows > 0) {
+            echo "¡Usuario identificado con éxito!";
+            
+            $session = new Session;
+            $session->iniciar($nombre,$row["tipo"]);
+            
+            header("Refresh:1; url=/");
+        }
+        else {
+            echo "Usuario o contraseña incorrecta";
+            
+            header("Refresh:1; url=/login");
         }
     }
     
-     function insert_usuarios($nombre,$email,$pass) {
+     function registrar($nombre,$email,$pass) {
          $query = "INSERT INTO usuarios (nick, email, pass,tipo) VALUES (?,?,?,?)";
          if ($stmt = mysqli_prepare($GLOBALS['enlace'], $query)) {
             
