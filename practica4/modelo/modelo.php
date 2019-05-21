@@ -162,7 +162,7 @@ function getEvento($id){
 
         if ($stmt = mysqli_prepare($GLOBALS['enlace'], $select)) {
 
-            mysqli_stmt_bind_param($stmt, "ss", $nombre, $pass);
+            mysqli_stmt_bind_param($stmt, "ss", $nombre, $pass);     
 
             mysqli_stmt_execute($stmt);
             
@@ -179,13 +179,18 @@ function getEvento($id){
         }*/
         $select = "SELECT * FROM usuarios WHERE nick='$nombre' AND pass='$pass'";
         $result = mysqli_query($GLOBALS['enlace'], $select);
-        
+        $row = mysqli_fetch_array($result);
+               
         if ($result->num_rows > 0) {
             echo "¡Usuario identificado con éxito!";
+            $_SESSION["tipo"] = $row["tipo"];
+            $_SESSION["nick"] = $nombre;
+            
             header("Refresh:1; url=/");
         }
         else {
             echo "Usuario o contraseña incorrecta";
+            
             header("Refresh:1; url=/login");
         }
     }

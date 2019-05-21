@@ -18,6 +18,10 @@ $request = $_SERVER['REQUEST_URI'];
 
 switch ($request) {
     case '/' :
+        if ($_SESSION["tipo"] == "registrado" || $_SESSION["tipo"] == "gestor" || $_SESSION["tipo"] == "admin" || $_SESSION["tipo"] == "superusuario") {
+            $nick = $_SESSION["nick"];
+            echo "Bienvenido $nick";
+        }
     case '' :
         $renderparams["menu"] = $bd->select_menu();
         $renderparams["eventos"] = $bd->select_evento();
@@ -25,6 +29,7 @@ switch ($request) {
 
         echo $twig->render('portada.html',$renderparams);
         break;
+        
     case '/evento' :
         $id = $_POST["idEvento"];
         $renderparams["menu"] = $bd->select_menu();
@@ -35,12 +40,14 @@ switch ($request) {
         
         echo $twig->render('evento.html',$renderparams);
         break;
+        
     case '/contacto':
         $renderparams["menu"] = $bd->select_menu();
         $renderparams["eventos"] = $bd->select_evento();
         
         echo $twig->render('contacto.html', $renderparams);
         break;
+        
     case '/comentario':
         $nombre = $_POST["nombre"];
         $idEvento = $_POST["id"];
@@ -52,6 +59,7 @@ switch ($request) {
         $bd->insert_comentario($nombre,$idEvento,$comentario,$email,$fecha_hora,$ipAddress);
         header('Location: /');
         break;
+        
     case '/imprimir':
         $id = $_POST["idEvento"];
         $renderparams["menu"] = $bd->select_menu();
@@ -62,6 +70,7 @@ switch ($request) {
     
         echo $twig->render('imprimir_evento.html', $renderparams);
         break;
+        
     case '/login':
         if (isset($_POST["nombre"]) && isset($_POST["pass"])) {
             $nombre = $_POST["nombre"];
@@ -73,6 +82,7 @@ switch ($request) {
 
         echo $twig->render('login.html',$renderparams);
         break;
+        
     case '/registro':
         if (isset($_POST["nombre"]) && isset($_POST["email"]) && isset($_POST["pass"])) {
             $nombre = $_POST["nombre"];
@@ -85,6 +95,13 @@ switch ($request) {
         $renderparams["menu"] = $bd->select_menu();
         
         echo $twig->render('registro.html',$renderparams);
+        break;
+        
+    case '/panel':
+        break;
+    
+    case '/header.html':
+        
         break;
     
     default:
