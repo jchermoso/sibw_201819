@@ -1,18 +1,75 @@
-<header {% if imprimir %} class="imp" {% endif %}>
+<header class="{% if imprimir %}imp {% elseif error == 404 %} oculto {% endif %}">
     <img src = "img/logo.svg" {% if imprimir %} class="pos_imp" {% endif %}>
     <h1>SALA TEABAG</h1>
-    <ul class="nav {%if imprimir %} oculto {% endif%}">
+    <ul class="nav {%if imprimir or login %} oculto {% endif%}">
         <!--menu-->
         {% for n in menu %}
         <li><a href='{{n.ruta}}'>{{n.nombre}}</a>
-            {% if n.nombre == 'Eventos' %}
+            {% if n.nombre == 'Eventos' and tipo in ['gestor', 'superusuario'] %}
                 <ul>
                     {% for e in eventos %}
                         <li><a href="" onclick="verEvento({{e.id}}, event)">{{e.nombre}}</a> </li>
                     {% endfor %}
                 </ul>
-            {% elseif n.nombre == 'Panel'%}
+            {% elseif n.nombre == 'Panel de control' %}
+                <ul>
+                    {% if tipo == 'registrado' %}
+                        <li><a href="">Editar perfil</a></li>
 
+                        <li><a href="">A&ntilde;adir comentario al evento </a></li>
+
+                        <li><a href="/logout">Logout</a></li>
+                    {% elseif tipo == 'moderador' %}
+                        <li><a href="">Editar perfil</a></li>
+
+                        <li><a href="">Editar comentario</a></li>
+                        <li><a href="">Listado de comentarios</a></li>
+                        <li><a href="">Buscar comentario</a></li>
+                        <li><a href="">Eliminar comentarios</a></li>
+
+                        <li><a href="/logout">Logout</a></li>
+                    {% elseif tipo == 'gestor' %}
+                        <li><a href="">Editar perfil</a></li>
+
+                        <li><a href="">A&ntilde;adir etiqueta</a></li>
+                        <li><a href="">Eliminar etiqueta</a></li>
+
+                        <li><a href="/listado">Listado de eventos</a></li>
+                        <li><a href="">Buscar eventos</a></li>
+                        <li><a href="">A&ntilde;adir evento</a></li>
+                        <li><a href="">Editar evento</a></li>
+                        <li><a href="">Eliminar evento</a></li>
+
+                        <li><a href="">A&ntilde;adir fotograf&iacute;a al evento </a></li>
+                        <li><a href="">Eliminar fotograf&iacute;a</a></li>
+
+                        <li><a href=""> evento</a></li>
+
+                        <li><a href="/logout">Logout</a></li>
+                    {% elseif tipo == 'superusuario' %}
+                        <li><a href="">Editar perfil</a></li>
+                        <li><a href="">Editar permisos de los usuarios</a></li>
+
+                        <li><a href="">A&ntilde;adir etiqueta</a></li>
+                        <li><a href="">Eliminar etiqueta</a></li>
+
+                        <li><a href="/listado">Listado de eventos</a></li>
+                        <li><a href="">Buscar eventos</a></li>
+                        <li><a href="">A&ntilde;adir evento</a></li>
+                        <li><a href="">Editar evento</a></li>
+                        <li><a href="">Eliminar evento</a></li>
+
+                        <li><a href="">Editar comentario</a></li>
+                        <li><a href="">Listado de comentarios</a></li>
+                        <li><a href="">Buscar comentario</a></li>
+                        <li><a href="">Eliminar comentarios</a></li>
+
+                        <li><a href="/logout">Logout</a></li>
+                    {% else %}
+                        <!-- Usuario anonimo -->
+                        <li><a href="/login">Registrarse</a></li>
+                    {% endif %}
+                </ul>
             {% endif %}
         </li>
         {% endfor %}

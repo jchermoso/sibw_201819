@@ -142,19 +142,6 @@ header h1 {
 
 .nav ul li:last-child a { border: none; }
 
-/*
-header ul {
-    display: flex;
-    flex-direction: row;
-    list-style: none;
-    text-align: center;
-    padding-top: 2vh;
-    font-family: sans-serif;
-}
-
-header ul li {
-    width:100%;
-}*/
 /**link visitado**/
 li a:visited {
     color:beige;
@@ -399,6 +386,7 @@ padding: 2vh;
 
 .login {
     margin: auto;
+    padding: 2vh;
     text-align: center;
     width: auto;
 }

@@ -20,10 +20,12 @@ $request = $_SERVER['REQUEST_URI'];
 switch ($request) {
     case '/' :
     case '' :
-        echo $session->getNick();  
+        echo $session->getNick() . "<br>" . $session->getTipo();
         $renderparams["menu"] = $bd->select_menu();
         $renderparams["eventos"] = $bd->select_evento();
         $renderparams["galeria"] = $bd->select_galeria();
+        $renderparams["nick"] = $session->getNick();
+        $renderparams["tipo"] = $session->getTipo();
 
         echo $twig->render('portada.html',$renderparams);
         break;
@@ -79,6 +81,7 @@ switch ($request) {
             $bd->login($nombre,$pass);
         }
         $renderparams["menu"] = $bd->select_menu();
+        $renderparams["login"] = 'login';
         
         echo $twig->render('login.html',$renderparams);
         break;
@@ -93,6 +96,7 @@ switch ($request) {
         }
     
         $renderparams["menu"] = $bd->select_menu();
+        $renderparams["eventos"] = $bd->select_evento();
         
         echo $twig->render('registro.html',$renderparams);
         break;
@@ -105,6 +109,7 @@ switch ($request) {
             $renderparams["nick"] = $session->getNick();
             $renderparams["tipo"] = $session->getTipo();
             $renderparams["menu"] = $bd->select_menu();
+            $renderparams["eventos"] = $bd->select_evento();
 
             echo $twig->render('panel.html',$renderparams);
         }
@@ -118,7 +123,6 @@ switch ($request) {
     
     default:
         $renderparams['error'] = 404;
-        $renderparams["menu"] = $bd->select_menu();
         
         echo $twig->render('404.html', $renderparams);
         break;
