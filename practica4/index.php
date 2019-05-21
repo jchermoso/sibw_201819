@@ -86,6 +86,7 @@ switch ($request) {
     
     default:
         $renderparams['error'] = 404;
+        $renderparams["menu"] = $bd->select_menu();
 
         echo $twig->render('404.html', $renderparams);
         break;

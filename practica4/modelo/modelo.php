@@ -169,11 +169,14 @@ function getEvento($id){
             /* ejecutar la consulta */
             mysqli_stmt_execute($stmt);
             
-            if ($stmt) {
+            if ($stmt->num_rows > 0) {
                 echo "¡Usuario identificado con éxito!";
                 header("Refresh:1; url=/");
             }
-        
+            else {
+                echo "Usuario inexistente";
+                header("Refresh:1; url=/login");
+            }
         }
     }
     
