@@ -1,5 +1,6 @@
 <?php
-require_once("modelo.php");
+require_once "modelo.php";
+require_once "session.php";
 
 $enlace = mysqli_connect("127.0.0.1", "usuario", "lechuza", "sibw");
 
@@ -183,8 +184,9 @@ function getEvento($id){
                
         if ($result->num_rows > 0) {
             echo "¡Usuario identificado con éxito!";
-            $_SESSION["tipo"] = $row["tipo"];
-            $_SESSION["nick"] = $nombre;
+            
+            $session = new Session;
+            $session->iniciar($nombre,$row["tipo"]);
             
             header("Refresh:1; url=/");
         }

@@ -2,11 +2,15 @@
 if(!isset($_SESSION)) {
   session_start();
 }
+error_reporting(0);
 
 require_once 'vendor/autoload.php';
 require_once 'modelo/modelo.php';
+require_once 'modelo/session.php';
 
 $bd = new BD;
+$session = new Session;
+
 date_default_timezone_set('Europe/Madrid');
 
 $renderparams = [];
@@ -18,11 +22,9 @@ $request = $_SERVER['REQUEST_URI'];
 
 switch ($request) {
     case '/' :
-        if ($_SESSION["tipo"] == "registrado" || $_SESSION["tipo"] == "gestor" || $_SESSION["tipo"] == "admin" || $_SESSION["tipo"] == "superusuario") {
-            $nick = $_SESSION["nick"];
-            echo "Bienvenido $nick";
-        }
     case '' :
+        echo $session->getNick();
+        
         $renderparams["menu"] = $bd->select_menu();
         $renderparams["eventos"] = $bd->select_evento();
         $renderparams["galeria"] = $bd->select_galeria();
@@ -44,6 +46,8 @@ switch ($request) {
     case '/contacto':
         $renderparams["menu"] = $bd->select_menu();
         $renderparams["eventos"] = $bd->select_evento();
+        
+        $session->finalizar();
         
         echo $twig->render('contacto.html', $renderparams);
         break;
@@ -79,7 +83,7 @@ switch ($request) {
             $bd->login($nombre,$pass);
         }
         $renderparams["menu"] = $bd->select_menu();
-
+        
         echo $twig->render('login.html',$renderparams);
         break;
         
@@ -98,6 +102,12 @@ switch ($request) {
         break;
         
     case '/panel':
+        if (empty($session->getTipo())) {
+            echo "Solo para miembros";
+        }
+        else {
+            echo "ediiiiiii";
+        }
         break;
     
     case '/header.html':
@@ -111,5 +121,4 @@ switch ($request) {
         echo $twig->render('404.html', $renderparams);
         break;
 }
-
 ?>
