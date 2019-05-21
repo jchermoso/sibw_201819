@@ -1,7 +1,4 @@
 <?php
-if(!isset($_SESSION)) {
-  session_start();
-}
 error_reporting(0);
 
 require_once 'vendor/autoload.php';
@@ -23,8 +20,7 @@ $request = $_SERVER['REQUEST_URI'];
 switch ($request) {
     case '/' :
     case '' :
-        echo $session->getNick();
-        
+        echo $session->getNick();  
         $renderparams["menu"] = $bd->select_menu();
         $renderparams["eventos"] = $bd->select_evento();
         $renderparams["galeria"] = $bd->select_galeria();
@@ -33,6 +29,7 @@ switch ($request) {
         break;
         
     case '/evento' :
+        echo $session->getNick();  
         $id = $_POST["idEvento"];
         $renderparams["menu"] = $bd->select_menu();
         $renderparams["evento"] = $bd->getEvento($id);
@@ -44,11 +41,10 @@ switch ($request) {
         break;
         
     case '/contacto':
+        echo $session->getNick();  
         $renderparams["menu"] = $bd->select_menu();
         $renderparams["eventos"] = $bd->select_evento();
-        
-        $session->finalizar();
-        
+                
         echo $twig->render('contacto.html', $renderparams);
         break;
         
@@ -106,18 +102,24 @@ switch ($request) {
             echo "Solo para miembros";
         }
         else {
-            echo "ediiiiiii";
+            $renderparams["nick"] = $session->getNick();
+            $renderparams["tipo"] = $session->getTipo();
+            $renderparams["menu"] = $bd->select_menu();
+
+            echo $twig->render('panel.html',$renderparams);
         }
         break;
-    
-    case '/header.html':
         
+    case '/logout':
+        $session->finalizar();
+        echo "¡Hasta luego!";
+        header("Refresh:1; url=/");
         break;
     
     default:
         $renderparams['error'] = 404;
         $renderparams["menu"] = $bd->select_menu();
-
+        
         echo $twig->render('404.html', $renderparams);
         break;
 }
