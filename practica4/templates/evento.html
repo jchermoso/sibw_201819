@@ -37,33 +37,30 @@
         <a id="abrir" class="abrir-cerrar boton_personalizado" href="#" onclick="mostrar()">Desplegar Comentarios</a>
         <a id="cerrar" class="abrir-cerrar boton_personalizado" href="#" onclick="ocultar()">Cerrar Comentarios</a>
         <section id="comment" class="comment">
+
             <article class="section">
-                <form id="form" action="/comentario" method="POST">
-                    <div>
-                        <label for="nombre">Nombre</label>
-                        <input id="nombre" name="nombre" value="" type="text" required>
-                    </div>
-                    <div>
-                        <label for="email">E-mail</label>
-                        <input id="email" name="email" value="" type="email" required>
-                    </div>
-                    <div id="div">
-                        <label for="comentario">Introduce el comentario</label>
-                        <textarea id="comentario" name="comentario" required></textarea>
-                    </div>
-                    <input id="id" name="id" type="hidden" value="{{evento.id}}">
-                    <div class="button">
-                        <button type="submit">Enviar</button>
-                    </div>
-                </form>
+
+                {% if tipo == 'registrado' %}
+                    <form id="form" action="/comentario" method="POST">
+                        <div id="div">
+                            <label for="comentario">Introduce el comentario</label>
+                            <textarea id="comentario" name="comentario" required></textarea>
+                        </div>
+                        <input id="id" name="id" type="hidden" value="{{evento.id}}">
+                        <div class="button">
+                            <button type="submit">Enviar</button>
+                        </div>
+                    </form>
+                {% else %}
+                    <b>Regístrate/identifícate para dejar tu comentario</b>
+                {% endif %}
             </article>
             
             {% for n in comentarios if n.id_evento == evento.id %}
                 <article id="comment_{{n.id}}" class="section">
-                    <p>{{n.nombre}}</p>
-                    <p>{{n.correo}}</p>
+                    <p><b>{{n.nick}}</b></p>
                     <p>{{n.texto}}</p>
-                    <p>Hora de publicación: {{n.fecha_hora}}</p>
+                    <p><b>Hora de publicación: {{n.fecha_hora}}</b></p>
                 </article>
             {% endfor %}
 

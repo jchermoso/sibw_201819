@@ -135,14 +135,14 @@ function getEvento($id){
     return $vector;
   }
     
-    function insert_comentario($nombre,$id,$comentario,$email,$fecha_hora,$ipAddress) {
-        $query = "INSERT INTO comentarios(id_evento,nombre,correo,fecha_hora,texto,ip_usuario) VALUES (?,?,?,?,?,?)";  
+    function insert_comentario($nombre,$idEvento,$comentario,$fecha_hora) {
+        $query = "INSERT INTO comentarios(id_evento,nick,fecha_hora,texto) VALUES (?,?,?,?)";  
         
         /* crear una sentencia preparada */
         if ($stmt = mysqli_prepare($GLOBALS['enlace'], $query)) {
 
         /* ligar parámetros para marcadores */
-            mysqli_stmt_bind_param($stmt, "isssss", $id,$nombre,$email,$fecha_hora,$comentario,$ipAddress);
+            mysqli_stmt_bind_param($stmt, "isss", $idEvento,$nombre,$fecha_hora,$comentario);
 
         /* ejecutar la consulta */
             mysqli_stmt_execute($stmt);

@@ -33,6 +33,7 @@ switch ($request) {
     case '/evento' :
         echo $session->getNick();  
         $id = $_POST["idEvento"];
+        $renderparams["tipo"] = $session->getTipo();
         $renderparams["menu"] = $bd->select_menu();
         $renderparams["evento"] = $bd->getEvento($id);
         $renderparams["eventos"] = $bd->select_evento();
@@ -51,14 +52,12 @@ switch ($request) {
         break;
         
     case '/comentario':
-        $nombre = $_POST["nombre"];
+        $nombre = $session->getNick();
         $idEvento = $_POST["id"];
         $comentario = $_POST["comentario"];
-        $email = $_POST["email"];
         $fecha_hora =  date(DATE_RFC2822);
-        $ipAddress = $_SERVER['REMOTE_ADDR'];
         
-        $bd->insert_comentario($nombre,$idEvento,$comentario,$email,$fecha_hora,$ipAddress);
+        $bd->insert_comentario($nombre,$idEvento,$comentario,$fecha_hora);
         header('Location: /');
         break;
         

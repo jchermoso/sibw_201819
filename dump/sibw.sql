@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 21-05-2019 a las 19:32:09
+-- Tiempo de generación: 22-05-2019 a las 13:10:02
 -- Versión del servidor: 10.1.38-MariaDB
 -- Versión de PHP: 7.3.4
 
@@ -31,10 +31,8 @@ SET time_zone = "+00:00";
 CREATE TABLE `comentarios` (
   `id` int(50) NOT NULL,
   `id_evento` int(10) NOT NULL,
-  `nombre` varchar(20) NOT NULL,
-  `correo` varchar(100) NOT NULL,
   `texto` text NOT NULL,
-  `ip_usuario` varchar(45) DEFAULT NULL,
+  `nick` varchar(45) DEFAULT NULL,
   `fecha_hora` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -42,13 +40,10 @@ CREATE TABLE `comentarios` (
 -- Volcado de datos para la tabla `comentarios`
 --
 
-INSERT INTO `comentarios` (`id`, `id_evento`, `nombre`, `correo`, `texto`, `ip_usuario`, `fecha_hora`) VALUES
-(1, 2, 'fdwd', 'asfaf@ssf.com', 'fef', '127.0.0.1', 'Thu, 02 May 2019 13:20:06 +0200'),
-(2, 2, 'comentario2', 'comwntando2sgwre@aafae.com', 'sgwgw wiiiii\r\n', '127.0.0.1', 'Thu, 02 May 2019 13:30:24 +0200'),
-(3, 2, 'JC', 'escribe@asfef.com', 'arha<tswgn<swtgh<tsh<th', '127.0.0.1', 'Thu, 02 May 2019 13:34:06 +0200'),
-(4, 4, 'maikel', 'afaef@afae.com', 'yeyiiiii!!!!', '127.0.0.1', 'Thu, 02 May 2019 13:38:21 +0200'),
-(5, 1, 'Probando', 'asfaf@ssf.com', 'zi', '127.0.0.1', 'Thu, 02 May 2019 13:40:08 +0200'),
-(6, 3, 'Probando', 'asfaf@ssf.com', 'hhh', '127.0.0.1', 'Thu, 02 May 2019 16:13:17 +0200');
+INSERT INTO `comentarios` (`id`, `id_evento`, `texto`, `nick`, `fecha_hora`) VALUES
+(9, 1, 'i become so numb i can feel you there', 'maikel', 'Wed, 22 May 2019 12:55:30 +0200'),
+(10, 4, 'yoyo violadores co', 'alex', 'Wed, 22 May 2019 13:03:44 +0200'),
+(11, 2, 'apetese', 'maikel', 'Wed, 22 May 2019 13:07:46 +0200');
 
 -- --------------------------------------------------------
 
@@ -255,7 +250,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `comentarios`
 --
 ALTER TABLE `comentarios`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `etiquetas`
