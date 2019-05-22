@@ -107,26 +107,27 @@ switch ($request) {
         $renderparams["eventos"] = $bd->select_evento();
         
         echo $twig->render('registro.html',$renderparams);
-        break;
-        
-    case '/panel':
-        if (empty($session->getTipo())) {
-            echo "Solo para miembros";
-        }
-        else {
-            $renderparams["nick"] = $session->getNick();
-            $renderparams["tipo"] = $session->getTipo();
-            $renderparams["menu"] = $bd->select_menu();
-            $renderparams["eventos"] = $bd->select_evento();
-
-            echo $twig->render('panel.html',$renderparams);
-        }
-        break;
-        
+        break;        
     case '/logout':
         $session->finalizar();
         echo "¡Hasta luego!";
         header("Refresh:1; url=/");
+        break;
+    
+    case '/editar_perfil':
+        if (isset($_POST["pass"]) && isset($_POST["email"]) && isset($_POST["desc"])) {
+            $bd->modificar_perfil($session->getNick(),$_POST["pass"],$_POST["email"],$_POST["desc"]);
+        }
+
+        $renderparams["perfil"] = $bd->select_usuario($session->getNick());
+        $renderparams["menu"] = $bd->select_menu();
+
+        echo $twig->render('operacion.html',$renderparams);
+        break;
+    
+    case '/lista_comentarios':
+        $renderparams["comentarios"] = $bd->select_comentarios();
+
         break;
     
     default:

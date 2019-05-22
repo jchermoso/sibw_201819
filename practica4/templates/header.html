@@ -14,13 +14,13 @@
             {% elseif n.nombre == 'Panel de control' %}
                 <ul>
                     {% if tipo == 'registrado' %}
-                        <li><a href="">Editar perfil</a></li>
+                        <li><a href="/editar_perfil">Editar perfil</a></li>
 
                         <li><a href="">A&ntilde;adir comentario al evento </a></li>
 
                         <li><a href="/logout">Logout</a></li>
                     {% elseif tipo == 'moderador' %}
-                        <li><a href="">Editar perfil</a></li>
+                        <li><a href="/editar_perfil">Editar perfil</a></li>
 
                         <li><a href="">Editar comentario</a></li>
                         <li><a href="">Listado de comentarios</a></li>
@@ -29,7 +29,7 @@
 
                         <li><a href="/logout">Logout</a></li>
                     {% elseif tipo == 'gestor' %}
-                        <li><a href="">Editar perfil</a></li>
+                        <li><a href="/editar_perfil">Editar perfil</a></li>
 
                         <li><a href="">A&ntilde;adir etiqueta</a></li>
                         <li><a href="">Eliminar etiqueta</a></li>
@@ -47,7 +47,7 @@
 
                         <li><a href="/logout">Logout</a></li>
                     {% elseif tipo == 'superusuario' %}
-                        <li><a href="">Editar perfil</a></li>
+                        <li><a href="/editar_perfil">Editar perfil</a></li>
                         <li><a href="">Editar permisos de los usuarios</a></li>
 
                         <li><a href="">A&ntilde;adir etiqueta</a></li>
@@ -60,7 +60,7 @@
                         <li><a href="">Eliminar evento</a></li>
 
                         <li><a href="">Editar comentario</a></li>
-                        <li><a href="">Listado de comentarios</a></li>
+                        <li><a href="/lista_comentarios">Listado de comentarios</a></li>
                         <li><a href="">Buscar comentario</a></li>
                         <li><a href="">Eliminar comentarios</a></li>
 
