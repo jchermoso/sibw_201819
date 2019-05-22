@@ -4,6 +4,9 @@
 <main id="listado">
     <section class="tablas">
         <h1>{{titulo}}</h1>
+        <div class="derecha">
+            <a href="/nuevo_evento" class="boton_personalizado"><i class="far fa-plus-square"></i> Nuevo</a>
+        </div>
         <table>
             <tr>
                 <th hidden>Identificador</th>
@@ -16,13 +19,10 @@
                     <td>{{evento.nombre}}</td>
                     <td>
                         <div class="botones">
-                            <a href=""><i class="far fa-plus-square"></i> Nuevo</a>
+                            <a href="#" onclick="modificarEvento({{evento.id}}, event)"><i class="far fa-edit"></i> Editar</a>
                         </div>
                         <div class="botones">
-                            <a href="#"><i class="far fa-edit"></i> Editar</a>
-                        </div>
-                        <div class="botones">
-                            <a href="#"><i class="fas fa-trash-alt"></i> Eliminar</a>
+                            <a href="#" onclick="eliminarEvento({{evento.id}}, event)"><i class="fas fa-trash-alt"></i> Eliminar</a>
                         </div>
                     </td>
                 </tr>

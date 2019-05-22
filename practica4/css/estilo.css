@@ -428,7 +428,12 @@ padding: 2vh;
   padding: 20px;
 }
 
-/**formato tablas**/
+/**formato listados**/
+.derecha{
+    float: right;
+    margin: 0 100px;
+}
+
 .tablas{
     padding: 9vh 30%;
     text-align: center;

@@ -43,7 +43,49 @@ switch ($request) {
         echo $twig->render('evento.html',$renderparams);
         break;
 
-    case '/listado':
+    case '/nuevo_evento':
+        $renderparams["menu"] = $bd->select_menu();
+        $renderparams["evento"] = NULL;
+        $renderparams["eventos"] = $bd->select_evento();
+        $renderparams["tipo"] = $session->getTipo();
+        $renderparams["titulo"] = 'Nuevo evento';
+
+        echo $twig->render('nuevo-evento.html', $renderparams);
+        break;
+
+    case '/editar_evento':
+        $id = $_POST["idEvento"];
+        $renderparams["evento"] = $bd->getEvento($id);
+        $renderparams["eventos"] = $bd->select_evento();
+        $renderparams["galeria"] = $bd->select_galeria();
+        $renderparams["comentarios"] = $bd->select_comentario($id);
+        $renderparams["menu"] = $bd->select_menu();
+        $renderparams["tipo"] = $session->getTipo();
+        $renderparams["titulo"] = 'Editar evento';
+
+        echo $twig->render('nuevo-evento.html', $renderparams);
+        break;
+
+    case '/guardar_evento':
+        $id = $_POST['id'];
+        $nombre = $_POST['nombre'];
+        $grupo = $_POST['grupo'];
+        $texto = $_POST['texto'];
+        $fechaP = $id == -1? date(DATE_RFC2822) : $_POST['fecha1'];
+        $fechaM = date(DATE_RFC2822);
+
+        $bd->insert_update_evento($id,$nombre,$grupo,$texto,$fechaP,$fechaM);
+        header('Location: /');
+        break;
+
+    case '/eliminar_evento':
+        $id = $_POST["idEvento"];
+        echo "$id";
+        $bd->delete_evento($id);
+        header('Location: /listado');
+        break;
+
+    case '/listado': // listado de eventos
         $renderparams["eventos"] = $bd->select_evento();
         $renderparams["menu"] = $bd->select_menu();
         $renderparams["tipo"] = $session->getTipo();

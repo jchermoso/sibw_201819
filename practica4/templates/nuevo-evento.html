@@ -1,0 +1,48 @@
+{% extends 'base.html' %} {% block context %}
+{% if evento is null %}
+    {% set id = -1 %}
+    {% set nombre = '' %}
+    {% set grupo = '' %}
+    {% set texto = '' %}
+    {% set fechaP = '' %}
+    {% set fechaM = '' %}
+{% else %}
+    {% set id = evento.id %}
+    {% set nombre = evento.nombre %}
+    {% set grupo = evento.grupo %}
+    {% set texto = evento.texto %}
+    {% set fechaP = evento.fecha_publi %}
+    {% set fechaM = evento.fecha_mod %}
+{% endif %}
+<!--zona principal-->
+<main id="nm_evento">
+    <section class="contacto">
+        <form  id="event_form" class="contact_form" action="/guardar_evento" method="POST" name="form">
+            <div>
+                <h1>{{titulo}}</h1>
+            </div>
+            <div>
+                <label for="name">Nombre:</label>
+                <input type="text" name="nombre" placeholder="Escribe el nombre del evento" value="{{nombre}}" />
+            </div>
+            <div>
+                <label for="grupo">Grupo:</label>
+                <input type="text" name="grupo" placeholder="Escribe el nombre del grupo" value="{{grupo}}" />
+            </div>
+            <div>
+                <label for="texto">Texto:</label>
+                <textarea type="textarea" name="texto" cols="40" rows="6" placeholder="Descripción detallada del evento">{{texto}}</textarea>
+            </div>
+            <div hidden>
+                <input type="number" name="id" value="{{id}}" />
+                <input type="text" name="fecha1" value="{{fechaP}}" />
+            </div>
+
+            <div>
+                <button class="submit"  >Enviar</button>
+            </div>
+        </form>
+    </section>
+</main>
+
+{% endblock %}

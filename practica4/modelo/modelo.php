@@ -72,11 +72,11 @@ function select_comentario($id) {
     }
     
     /* cerrar sentencia */
-    //mysqli_stmt_close($stmt);
+    mysqli_stmt_close($stmt);
   }
     
     /* cerrar conexión */
-    mysqli_close($GLOBALS['enlace']);
+    //mysqli_close($GLOBALS['enlace']);
     
   return $result;
 }
@@ -241,15 +241,45 @@ function getEvento($id){
 
     }
 
-    function borrar_evento($id) {
+    function delete_evento($id) {
+        $query = "DELETE FROM evento WHERE id=?";
 
+        /* crear una sentencia preparada */
+        if ($stmt = mysqli_prepare($GLOBALS['enlace'], $query)) {
+
+            /* ligar parámetros para marcadores */
+            mysqli_stmt_bind_param($stmt, "i",$id);
+
+            /* ejecutar la consulta */
+            mysqli_stmt_execute($stmt);
+
+            /* cerrar sentencia */
+            mysqli_stmt_close($stmt);
+        }
     }
 
-    function aniadir_evento() {
+    function insert_update_evento($id,$nombre,$grupo,$texto,$fechaP,$fechaM){
+        $query = '';
+        if ($id == -1){
+            $query = "INSERT INTO evento(nombre,texto,grupo,fecha_publi,fecha_mod) VALUES (?,?,?,?,?)";
+        } else {
+            $query = "UPDATE evento SET nombre=?, texto=?, grupo=?, fecha_publi=?, fecha_mod=? WHERE id=?";
+        }
 
-    }
+        /* crear una sentencia preparada */
+        if ($stmt = mysqli_prepare($GLOBALS['enlace'], $query)) {
 
-    function editar_evento() {
+            /* ligar parámetros para marcadores */
+            if ($id == -1)
+                mysqli_stmt_bind_param($stmt, "sssss", $nombre,$grupo,$texto,$fechaP,$fechaM);
+            else
+                mysqli_stmt_bind_param($stmt, "sssssi", $nombre,$grupo,$texto,$fechaP,$fechaM,$id);
+            /* ejecutar la consulta */
+            mysqli_stmt_execute($stmt);
+
+            /* cerrar sentencia */
+            mysqli_stmt_close($stmt);
+        }
 
     }
 

@@ -36,14 +36,12 @@
 
                         <li><a href="/listado">Listado de eventos</a></li>
                         <li><a href="">Buscar eventos</a></li>
-                        <li><a href="">A&ntilde;adir evento</a></li>
-                        <li><a href="">Editar evento</a></li>
+                        <li><a href="/nuevo_evento">A&ntilde;adir evento</a></li>
+                        <li><a href="#">Editar evento</a></li>
                         <li><a href="">Eliminar evento</a></li>
 
                         <li><a href="">A&ntilde;adir fotograf&iacute;a al evento </a></li>
                         <li><a href="">Eliminar fotograf&iacute;a</a></li>
-
-                        <li><a href=""> evento</a></li>
 
                         <li><a href="/logout">Logout</a></li>
                     {% elseif tipo == 'superusuario' %}
@@ -55,8 +53,8 @@
 
                         <li><a href="/listado">Listado de eventos</a></li>
                         <li><a href="">Buscar eventos</a></li>
-                        <li><a href="">A&ntilde;adir evento</a></li>
-                        <li><a href="">Editar evento</a></li>
+                        <li><a href="/nuevo_evento">A&ntilde;adir evento</a></li>
+                        <li><a href="#">Editar evento</a></li>
                         <li><a href="">Eliminar evento</a></li>
 
                         <li><a href="">Editar comentario</a></li>
@@ -74,4 +72,7 @@
         </li>
         {% endfor %}
     </ul>
+    <form id="formEvento" action="" method="POST" name="formEvento" hidden>
+        <input id="idEvento" name="idEvento" value="">
+    </form>
 </header>

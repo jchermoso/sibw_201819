@@ -19,6 +19,22 @@ function verEvento(id, event){
      document.getElementById("formEvento").submit();
  }
 
+function modificarEvento(id, event){
+    event.preventDefault();
+
+    document.getElementById("idEvento").value = id;
+    document.getElementById("formEvento").action = "/editar_evento";
+    document.getElementById("formEvento").submit();
+}
+
+function eliminarEvento(id, event){
+    event.preventDefault();
+
+    document.getElementById("idEvento").value = id;
+    document.getElementById("formEvento").action = "/eliminar_evento";
+    document.getElementById("formEvento").submit();
+}
+
 function imprimirEvento(id, event){
      event.preventDefault();
     
