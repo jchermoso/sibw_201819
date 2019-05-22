@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 22-05-2019 a las 13:10:02
+-- Tiempo de generación: 22-05-2019 a las 17:08:30
 -- Versión del servidor: 10.1.38-MariaDB
 -- Versión de PHP: 7.3.4
 
@@ -146,11 +146,11 @@ CREATE TABLE `menu` (
 
 INSERT INTO `menu` (`id`, `nombre`, `ruta`) VALUES
 (1, 'Home', '/'),
-(2, 'Eventos', '/listado'),
+(2, 'Eventos', '#'),
 (3, 'Contacto', '/contacto'),
 (4, 'Sobre nosotros', '/nosotros'),
 (5, 'Login', '/login'),
-(6, 'Panel de control', '/panel');
+(6, 'Panel de control', '#');
 
 -- --------------------------------------------------------
 
@@ -190,9 +190,10 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `nick`, `pass`, `email`, `descripcion`, `tipo`) VALUES
-(3, 'maikel', 'maikel', 'maikel@maikel.es', '', 'registrado'),
+(3, 'maikel', 'maikel', 'maikel@maikel.es', '', 'gestor'),
 (6, 'alex', 'pistolas', 'alex@gmail.com', '', 'registrado'),
-(7, 'admin', 'admin', 'admin@admin.com', 'Soy el fokin admin', 'admin');
+(7, 'admin', 'admin', 'admin@admin.com', 'Soy el fokin admin', 'moderador'),
+(8, 'jony', 'jony', 'jony@jony.es', '', 'superusuario');
 
 --
 -- Índices para tablas volcadas
@@ -286,7 +287,7 @@ ALTER TABLE `prohibidas`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Restricciones para tablas volcadas
