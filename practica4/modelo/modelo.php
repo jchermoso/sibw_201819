@@ -213,6 +213,45 @@ function getEvento($id){
         }   
     }
     
+    function borrar_comentario($id) {
+
+    }
+
+    function editar_comentario($id,$texto) {
+
+    }
+
+    function select_comentarios() {
+
+    }
+
+    function buscar_comentario($id) {
+
+    }
+
+    function borrar_evento($id) {
+
+    }
+
+    function aniadir_evento() {
+
+    }
+
+    function editar_evento() {
+
+    }
+
+    function aniadir_foto() {
+
+    }
+
+    function borrar_foto($id) {
+
+    }
+
+    function modificar_rol($id) {
+
+    }
 } 
 
 ?>
