@@ -313,6 +313,11 @@ function getEvento($id){
         $update = "UPDATE usuarios SET pass = '$pass', email = '$email', descripcion = '$descripcion' WHERE nick = '$nick'";
         $result = mysqli_query($GLOBALS['enlace'],$update);
     }
+
+    function modificar_comentario($comentario,$id) {
+        $update = "UPDATE comentarios SET texto = '$comentario' WHERE id = '$id'";
+        $result = mysqli_query($GLOBALS['enlace'],$update);
+    }
 } 
 
 ?>
