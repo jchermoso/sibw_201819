@@ -351,10 +351,14 @@ padding: 2vh;
     color: #1883ba;
     background-color: #ffffff;
   }
-#conoce{
+#conoce,
+.botones > a{
     color: black;
     font-weight: bold;
     text-decoration: none;
+}
+.botones > a{
+    padding: 2vh;
 }
 
 /**CSS para formatear la página imprimir**/
@@ -422,6 +426,31 @@ padding: 2vh;
   border-radius: 5px;
   background-color: #f2f2f2;
   padding: 20px;
+}
+
+/**formato tablas**/
+.tablas{
+    padding: 9vh 30%;
+    text-align: center;
+    width: 100%;
+}
+
+table {
+    border-collapse: separate;
+    background-color: cadetblue;
+    font-family: arial, sans-serif;
+    margin: 5vh 12vh;
+    width: auto;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
 }
 
 /**pie de página**/

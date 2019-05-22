@@ -42,7 +42,16 @@ switch ($request) {
         
         echo $twig->render('evento.html',$renderparams);
         break;
-        
+
+    case '/listado':
+        $renderparams["eventos"] = $bd->select_evento();
+        $renderparams["menu"] = $bd->select_menu();
+        $renderparams["tipo"] = $session->getTipo();
+        $renderparams["titulo"] = 'Listado de eventos';
+
+        echo $twig->render('listado-eventos.html', $renderparams);
+        break;
+
     case '/contacto':
         echo $session->getNick();  
         $renderparams["menu"] = $bd->select_menu();

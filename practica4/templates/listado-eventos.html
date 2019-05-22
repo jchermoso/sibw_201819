@@ -1,0 +1,35 @@
+{% extends 'base.html' %} {% block context %}
+
+<!--zona principal-->
+<main id="listado">
+    <section class="tablas">
+        <h1>{{titulo}}</h1>
+        <table>
+            <tr>
+                <th hidden>Identificador</th>
+                <th>Nombre Evento</th>
+                <th>Acciones</th>
+            </tr>
+            {% for evento in eventos %}
+                <tr>
+                    <td hidden>{{evento.id}}</td>
+                    <td>{{evento.nombre}}</td>
+                    <td>
+                        <div class="botones">
+                            <a href=""><i class="far fa-plus-square"></i> Nuevo</a>
+                        </div>
+                        <div class="botones">
+                            <a href="#"><i class="far fa-edit"></i> Editar</a>
+                        </div>
+                        <div class="botones">
+                            <a href="#"><i class="fas fa-trash-alt"></i> Eliminar</a>
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+
+    </section>
+</main>
+
+{% endblock %}
