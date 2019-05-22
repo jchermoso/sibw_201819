@@ -222,9 +222,21 @@ function getEvento($id){
     }
 
     function select_comentarios() {
+        $select = "SELECT * FROM comentarios";
+        $result = mysqli_query($GLOBALS['enlace'], $select);
+        $i = 0;
+        $vector = array();
 
+        if ($result->num_rows > 0) {
+        // output data of each row
+            while($row = $result->fetch_assoc()) {
+                $vector[$i] = $row;
+                $i++;
+            }
+        }
+        return $vector;
     }
-
+    
     function buscar_comentario($id) {
 
     }
@@ -251,6 +263,25 @@ function getEvento($id){
 
     function modificar_rol($id) {
 
+    }
+
+    function select_usuario($nick) {
+        $select = "SELECT * FROM usuarios WHERE nick='$nick'";
+        $result = mysqli_query($GLOBALS['enlace'],$select);
+        $vector = array();
+
+        if ($result->num_rows > 0) {
+            // output data of each row
+            while($row = $result->fetch_assoc()) {
+                $vector = $row;
+            }
+        }
+        return $vector;
+    }
+
+    function modificar_perfil($nick,$pass,$email,$descripcion) {
+        $update = "UPDATE usuarios SET pass = '$pass', email = '$email', descripcion = '$descripcion' WHERE nick = '$nick'";
+        $result = mysqli_query($GLOBALS['enlace'],$update);
     }
 } 
 

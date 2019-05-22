@@ -1,0 +1,27 @@
+{% extends 'base.html' %} {% block context %}
+<main id="content">
+    <section class="contacto">
+        <form  id="formContacto" class="contact_form" action="/editar_perfil" method="POST" name="contact_form" novalidate>
+            <div>
+                <label for="name">Nick: {{perfil.nick}}</label>
+            </div>
+            <div>
+                <label for="name">Contraseña:</label>
+                <input type="password" name="pass" value="{{perfil.pass}}"/>
+            </div>
+            <div>
+                <label for="name">Correo:</label>
+                <input type="text" name="email" value="{{perfil.email}}"/>
+            </div>
+            <div>
+                <label for="name">Descripción:</label>
+                <input type="text" name="desc" value="{{perfil.descripcion}}"/>
+            </div>
+            <div>
+                <label for="tipo">Tipo: {{perfil.tipo}}</label>
+            </div>
+            <button class="submit">Cambiar</button>
+        </form>
+    </section>
+</main>
+{% endblock %}
