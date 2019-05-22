@@ -1,0 +1,34 @@
+{% extends 'base.html' %} {% block context %}
+
+<!--zona principal-->
+<main id="listado">
+    <section class="tablas">
+        <table>
+            <tr>
+                <th>Comentario</th>
+                <th>Evento</th>
+                <th>Autor</th>
+                <th>Acciones</th>
+            </tr>
+            {% for c in comentarios %}
+                <tr>
+                    <td> <input type="text" name="comentario" value="{{c.texto}}"/></td>
+                    <td>{{c.id_evento}}</td>
+                    <input type = "hidden" name="id" value = "{{c.id}}"/>
+                    <td> {{c.nick}}</td>
+                    <td>
+                        <div class="botones">
+                            <a href="/editar_comentario"><i class="far fa-edit"></i> Editar</a>
+                        </div>
+                        <div class="botones">
+                            <a href="/eliminar_comentario"><i class="fas fa-trash-alt"></i> Eliminar</a>
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+
+    </section>
+</main>
+
+{% endblock %}

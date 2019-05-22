@@ -127,9 +127,16 @@ switch ($request) {
     
     case '/lista_comentarios':
         $renderparams["comentarios"] = $bd->select_comentarios();
-
+        $renderparams["menu"] = $bd->select_menu();
+        
+        echo $twig->render('listado_comentarios.html',$renderparams);
         break;
     
+    case '/editar_comentario':
+        break;
+    case '/eliminar_comentario':
+
+        break;
     default:
         $renderparams['error'] = 404;
         
