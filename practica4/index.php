@@ -192,7 +192,13 @@ switch ($request) {
         $update = "Mensaje editado por el moderador: " + $nuevo;
         $bd->modificar_comentario($id,$update);
         header('Location: /lista_comentarios');
+        break;
+    
+    case '/editar_rol':
+        $renderparams["menu"] = $bd->select_menu();
+        $renderparams["usuarios"] = $bd->select_usuarios();
 
+        echo $twig->render('actualizar_roles.html',$renderparams);
         break;
     default:
         $renderparams['error'] = 404;

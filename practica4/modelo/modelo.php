@@ -371,5 +371,21 @@ function getEvento($id){
 
     }
 
+    function select_usuarios() {
+        $select = "SELECT * FROM usuarios";
+        $result = mysqli_query($GLOBALS['enlace'], $select);
+        $i = 0;
+        $vector = array();
+    
+        if ($result->num_rows > 0) {
+        // output data of each row
+            while($row = $result->fetch_assoc()) {
+                $vector[$i] = $row;
+                $i++;
+            }
+        }
+        return $vector;
+      }
+
 } 
 ?>

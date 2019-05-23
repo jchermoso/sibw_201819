@@ -1,0 +1,32 @@
+{% extends 'base.html' %} {% block context %}
+
+<!--zona principal-->
+<main id="listado">
+    <section class="tablas">
+        <table>
+            <tr>
+                <th>Nick</th>
+                <th>Tipo</th>
+                <th>Acciones</th>
+            </tr>
+            {% for c in usuarios %}
+                <tr>
+                    <td>{{c.nick}}</td>
+                    <td hidden>{{c.id}}</td>
+                    <td>{{c.tipo}}</td>
+                    <td>
+                        <div class="botones">
+                            <a href="#" onclick="modificarComentario({{c.id}})"><i class="far fa-edit"></i> Editar</a>
+                        </div>
+                        <div class="botones">
+                            <a href="#" onclick="eliminarComentario({{c.id}})"><i class="fas fa-trash-alt"></i> Eliminar</a>
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+
+    </section>
+</main>
+
+{% endblock %}
