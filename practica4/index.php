@@ -175,8 +175,23 @@ switch ($request) {
         break;
     
     case '/editar_comentario':
+        $id = $_POST["idComentario"];
+        $renderparams["comentarios"] = $bd->select_comentario_mod($id);
+        $renderparams["menu"] = $bd->select_menu();
+        $renderparams["titulo"] = 'Editar comentario';
+        echo $twig->render('nuevo_comentario.html', $renderparams);
         break;
     case '/eliminar_comentario':
+        $id = $_POST["idComentario"];
+        $bd->eliminar_comentario($id);
+        header('Location: /lista_comentarios');
+        break;
+    case '/actualizar_comentario':
+        $id = $_POST["id"];
+        $nuevo =  $_POST["texto"];
+        $update = "Mensaje editado por el moderador: " + $nuevo;
+        $bd->modificar_comentario($id,$update);
+        header('Location: /lista_comentarios');
 
         break;
     default:

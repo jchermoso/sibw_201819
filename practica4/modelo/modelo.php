@@ -314,10 +314,62 @@ function getEvento($id){
         $result = mysqli_query($GLOBALS['enlace'],$update);
     }
 
-    function modificar_comentario($comentario,$id) {
+    function modificar_comentario($id,$texto) {
         $update = "UPDATE comentarios SET texto = '$comentario' WHERE id = '$id'";
         $result = mysqli_query($GLOBALS['enlace'],$update);
     }
-} 
 
+    function eliminar_comentario($id) {
+        $query = "DELETE FROM comentarios WHERE id=?";
+
+        if ($stmt = mysqli_prepare($GLOBALS['enlace'], $query)) {
+
+            mysqli_stmt_bind_param($stmt, "i",$id);
+
+            mysqli_stmt_execute($stmt);
+
+            mysqli_stmt_close($stmt);
+        }
+    }
+
+    function select_comentario_mod($id) {
+        $select = "SELECT * FROM comentarios WHERE id=?";
+    
+        /* crear una sentencia preparada */
+        if ($stmt = mysqli_prepare($GLOBALS['enlace'], $select)) {
+
+            /* ligar parámetros para marcadores */
+            mysqli_stmt_bind_param($stmt, "i", $id);
+    
+            /* ejecutar la consulta */
+            mysqli_stmt_execute($stmt);
+    
+            /* ligar variables de resultado */
+            $meta = $stmt->result_metadata(); 
+            
+            while ($field = $meta->fetch_field()) { 
+                $params[] = &$row[$field->name]; 
+            } 
+    
+            call_user_func_array(array($stmt, 'bind_result'), $params); 
+    
+            while ($stmt->fetch()) { 
+                foreach($row as $key => $val) { 
+                    $c[$key] = $val; 
+                } 
+                $result = $c;
+            } 
+    
+            /* cerrar sentencia */
+            mysqli_stmt_close($stmt);
+        }
+    
+        /* cerrar conexión */
+        //mysqli_close($GLOBALS['enlace']);
+        
+        return $result;
+
+    }
+
+} 
 ?>

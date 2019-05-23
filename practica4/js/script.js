@@ -35,6 +35,18 @@ function eliminarEvento(id, event){
     document.getElementById("formEvento").submit();
 }
 
+function modificarComentario(id){
+    document.getElementById("idComentario").value = id;
+    document.getElementById("formComentario").action = "/editar_comentario";
+    document.getElementById("formComentario").submit();
+}
+
+function eliminarComentario(id){
+    document.getElementById("idComentario").value = id;
+    document.getElementById("formComentario").action = "/eliminar_comentario";
+    document.getElementById("formComentario").submit();
+}
+
 function imprimirEvento(id, event){
      event.preventDefault();
     

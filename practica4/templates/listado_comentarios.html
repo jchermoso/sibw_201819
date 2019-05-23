@@ -12,16 +12,16 @@
             </tr>
             {% for c in comentarios %}
                 <tr>
-                    <td> <input type="text" name="comentario" value="{{c.texto}}"/></td>
+                    <td>{{c.texto}}</td>
+                    <td hidden>{{c.id}}</td>
                     <td>{{c.id_evento}}</td>
-                    <input type = "hidden" name="id" value = "{{c.id}}"/>
                     <td> {{c.nick}}</td>
                     <td>
                         <div class="botones">
-                            <a href="/editar_comentario"><i class="far fa-edit"></i> Editar</a>
+                            <a href="#" onclick="modificarComentario({{c.id}})"><i class="far fa-edit"></i> Editar</a>
                         </div>
                         <div class="botones">
-                            <a href="/eliminar_comentario"><i class="fas fa-trash-alt"></i> Eliminar</a>
+                            <a href="#" onclick="eliminarComentario({{c.id}})"><i class="fas fa-trash-alt"></i> Eliminar</a>
                         </div>
                     </td>
                 </tr>
