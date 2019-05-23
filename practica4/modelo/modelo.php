@@ -280,7 +280,6 @@ function getEvento($id){
             /* cerrar sentencia */
             mysqli_stmt_close($stmt);
         }
-
     }
 
     function aniadir_foto() {
@@ -314,8 +313,8 @@ function getEvento($id){
         $result = mysqli_query($GLOBALS['enlace'],$update);
     }
 
-    function modificar_comentario($id,$texto) {
-        $update = "UPDATE comentarios SET texto = '$comentario' WHERE id = '$id'";
+    function modificar_comentario($id,$comentario) {
+        $update = "UPDATE comentarios SET texto = '$comentario' WHERE id = $id";
         $result = mysqli_query($GLOBALS['enlace'],$update);
     }
 

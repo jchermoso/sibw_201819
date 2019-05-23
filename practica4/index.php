@@ -163,6 +163,7 @@ switch ($request) {
 
         $renderparams["perfil"] = $bd->select_usuario($session->getNick());
         $renderparams["menu"] = $bd->select_menu();
+        $renderparams["eventos"] = $bd->select_evento();
 
         echo $twig->render('operacion.html',$renderparams);
         break;
@@ -170,6 +171,8 @@ switch ($request) {
     case '/lista_comentarios':
         $renderparams["comentarios"] = $bd->select_comentarios();
         $renderparams["menu"] = $bd->select_menu();
+        $renderparams["eventos"] = $bd->select_evento();
+        $renderparams["tipo"] = $session->getTipo();
         
         echo $twig->render('listado_comentarios.html',$renderparams);
         break;
@@ -178,21 +181,26 @@ switch ($request) {
         $id = $_POST["idComentario"];
         $renderparams["comentarios"] = $bd->select_comentario_mod($id);
         $renderparams["menu"] = $bd->select_menu();
+        $renderparams["eventos"] = $bd->select_evento();
         $renderparams["titulo"] = 'Editar comentario';
+        $renderparams["tipo"] = $session->getTipo();
+
         echo $twig->render('nuevo_comentario.html', $renderparams);
         break;
     case '/eliminar_comentario':
         $id = $_POST["idComentario"];
         $bd->eliminar_comentario($id);
+
         header('Location: /lista_comentarios');
         break;
     case '/actualizar_comentario':
         $id = $_POST["id"];
         $nuevo =  $_POST["texto"];
-        $update = "Mensaje editado por el moderador: " + $nuevo;
-        $bd->modificar_comentario($id,$update);
-        header('Location: /lista_comentarios');
+        $update = '"Mensaje editado por el moderador:" ' . $nuevo;
 
+        $bd->modificar_comentario($id,$update);
+
+        header('Location: /lista_comentarios');
         break;
     default:
         $renderparams['error'] = 404;
