@@ -158,16 +158,47 @@ switch ($request) {
     
     case '/editar_perfil':
         if (isset($_POST["pass"]) && isset($_POST["email"]) && isset($_POST["desc"])) {
-            $bd->modificar_perfil($session->getNick(),$_POST["pass"],$_POST["email"],$_POST["desc"]);
+            $bd->modificar_perfil($session->getNick(),$_POST["pass"],$_POST["email"],$_POST["desc"], );
         }
 
         $renderparams["perfil"] = $bd->select_usuario($session->getNick());
         $renderparams["menu"] = $bd->select_menu();
         $renderparams["eventos"] = $bd->select_evento();
+        $renderparams["url"] = '/editar_perfil';
+        $renderparams["tipo"] = $session->getTipo();
+        $renderparams['roles'] = ['registrado', 'moderador', 'gestor', 'superusuario'];
 
         echo $twig->render('operacion.html',$renderparams);
+        header("Refresh:1; url=/");
         break;
-    
+
+    case '/editar_usuarios':
+        $nick = $_POST['nickUsuario'];
+
+        $renderparams["perfil"] = $bd->select_usuario($nick);
+        $renderparams["menu"] = $bd->select_menu();
+        $renderparams["eventos"] = $bd->select_evento();
+        $renderparams["tipo"] = $session->getTipo();
+        $renderparams["url"] = '/guardar';
+        $renderparams['roles'] = ['registrado', 'moderador', 'gestor', 'superusuario'];
+
+        echo $twig->render('operacion.html',$renderparams);
+        header("Refresh:1; url=/editar_rol");
+        break;
+
+    case '/guardar':
+        $id = $_POST["id"];
+        $nick = $_POST["name"];
+        $pass = $_POST["pass"];
+        $email = $_POST["email"];
+        $desc = $_POST["desc"];
+        $tipo = $_POST["tipo"];
+
+        $bd->modificar_usuario($nick, $pass, $email, $desc, $tipo, $id);
+
+        echo "usuario modificado con exito!";
+        header("Refresh:1; url=/editar_rol");
+        break;
     case '/lista_comentarios':
         $renderparams["comentarios"] = $bd->select_comentarios();
         $renderparams["menu"] = $bd->select_menu();
@@ -205,6 +236,7 @@ switch ($request) {
     case '/editar_rol':
         $renderparams["menu"] = $bd->select_menu();
         $renderparams["usuarios"] = $bd->select_usuarios();
+        $renderparams["tipo"] = $session->getTipo();
 
         echo $twig->render('actualizar_roles.html',$renderparams);
         break;

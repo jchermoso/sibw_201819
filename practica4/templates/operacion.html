@@ -1,9 +1,10 @@
 {% extends 'base.html' %} {% block context %}
 <main id="content">
     <section class="contacto">
-        <form  id="formContacto" class="contact_form" action="/editar_perfil" method="POST" name="contact_form" novalidate>
+        <form  id="formContacto" class="contact_form" action="{{url}}" method="POST" name="contact_form" novalidate>
             <div>
-                <label for="name">Nick: {{perfil.nick}}</label>
+                <label for="name">Nick:</label>
+                <input type="text" name="name" value="{{perfil.nick}}"/>
             </div>
             <div>
                 <label for="name">Contraseña:</label>
@@ -18,8 +19,15 @@
                 <input type="text" name="desc" value="{{perfil.descripcion}}"/>
             </div>
             <div>
-                <label for="tipo">Tipo: {{perfil.tipo}}</label>
+                <label for="tipo">Tipo: </label>
+                <select name="tipo" {% if tipo != "superusuario" %}disabled {% endif %} >
+                        <option>-- Elige rol --</option>
+                        {% for r in roles %}
+                            <option value="{{r}}"{% if perfil.tipo == r %} selected {% endif %}>{{r}}</option>
+                        {% endfor %}
+                </select>
             </div>
+            <input type="number" name="id" value="{{perfil.id}}" hidden>
             <button class="submit">Cambiar</button>
         </form>
     </section>

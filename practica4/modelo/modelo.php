@@ -313,6 +313,22 @@ function getEvento($id){
         $result = mysqli_query($GLOBALS['enlace'],$update);
     }
 
+    function modificar_usuario($nick,$pass,$email,$descripcion,$tipo, $id){
+        $query = "UPDATE usuarios SET nick=?, pass=?, email=?, descripcion=?, tipo=? WHERE id=?";
+
+        /* crear una sentencia preparada */
+        if ($stmt = mysqli_prepare($GLOBALS['enlace'], $query)) {
+
+            /* ligar parámetros para marcadores */
+            mysqli_stmt_bind_param($stmt, "sssssi", $nick,$pass,$email,$descripcion,$tipo, $id);
+            /* ejecutar la consulta */
+            mysqli_stmt_execute($stmt);
+
+            /* cerrar sentencia */
+            mysqli_stmt_close($stmt);
+        }
+    }
+
     function modificar_comentario($id,$comentario) {
         $update = "UPDATE comentarios SET texto = '$comentario' WHERE id = $id";
         $result = mysqli_query($GLOBALS['enlace'],$update);

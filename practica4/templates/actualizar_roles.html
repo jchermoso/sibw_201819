@@ -16,10 +16,10 @@
                     <td>{{c.tipo}}</td>
                     <td>
                         <div class="botones">
-                            <a href="#" onclick="modificarComentario({{c.id}})"><i class="far fa-edit"></i> Editar</a>
+                            <a href="#" onclick="modificarUsuario('{{c.nick}}', event)"><i class="far fa-edit"></i> Editar</a>
                         </div>
                         <div class="botones">
-                            <a href="#" onclick="eliminarComentario({{c.id}})"><i class="fas fa-trash-alt"></i> Eliminar</a>
+                            <a href="#" onclick="eliminarUsuario({{c.id}}, event)"><i class="fas fa-trash-alt"></i> Eliminar</a>
                         </div>
                     </td>
                 </tr>

@@ -47,6 +47,22 @@ function eliminarComentario(id){
     document.getElementById("formComentario").submit();
 }
 
+function modificarUsuario(nick, event){
+    event.preventDefault();
+
+    document.getElementById("nickUsuario").value = nick;
+    document.getElementById("formUsuario").action = "/editar_usuarios";
+    document.getElementById("formUsuario").submit();
+}
+
+function eliminarUsuario(id, event){
+    event.preventDefault();
+
+    document.getElementById("idUsuario").value = id;
+    document.getElementById("formUsuario").action = "/eliminar_perfil";
+    document.getElementById("formUsuario").submit();
+}
+
 function imprimirEvento(id, event){
      event.preventDefault();
     
