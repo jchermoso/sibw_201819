@@ -240,6 +240,15 @@ switch ($request) {
 
         echo $twig->render('actualizar_roles.html',$renderparams);
         break;
+
+    case '/busqueda':
+        $renderparams['ajax'] = '';
+        if (isset($_POST["query"])) {
+            $palabra = filter_var($_POST["query"], FILTER_SANITIZE_STRING);
+            $datos = $bd->busqueda($palabra);
+            echo $datos;
+        }
+        break;
     default:
         $renderparams['error'] = 404;
         

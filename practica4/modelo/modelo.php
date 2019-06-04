@@ -402,5 +402,31 @@ function getEvento($id){
         return $vector;
       }
 
+    function busqueda($palabra) {
+        $select = "SELECT * FROM evento WHERE nombre LIKE '%$palabra%' OR texto like '%$palabra%'";
+        $result = mysqli_query($GLOBALS['enlace'], $select);
+        $vector = '';
+
+        if ($result->num_rows > 0) {
+            $vector .= '<div class="table-responsive">
+          <table class="table table bordered">
+            <tr>
+              <th>Titulo</th>
+              <th hidden>Id</th>
+            </tr>';
+            // output data of each row
+            while($row = $result->fetch_assoc()) {
+                 $vector .= '
+                    <tr>
+                        <td><a href="" class = "enlace" onclick="verEvento('.$row["id"].', event)">'.$row["nombre"].'</a></td>
+                        <td hidden>'.$row["id"].'</td>
+                    </tr>';
+            }
+        } else {
+           $vector .= "No se encuentran resultados";
+        }
+        return $vector;
+    }
+
 } 
 ?>

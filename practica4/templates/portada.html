@@ -5,6 +5,11 @@
             {{ include("sidebar.html") }}
             <!--panel de eventos-->
             <section id = "eventos">
+                <div class="input-group">
+                    <span class="input-group-addon">Search</span>
+                    <input type="text" name="search_text" id="search_text" placeholder="Search by Customer Details" class="form-control" />
+                </div>
+                <div id="result" class="search"></div>
                 {% for n in eventos %}
                 <a href="" class = "enlace" onclick="verEvento({{n.id}}, event)">
                     <div class="container">
@@ -17,4 +22,34 @@
                 {% endfor %}
             </section>
         </main>
+
+<script>
+    $(document).ready(function(){
+        load_data();
+        function load_data(query)
+        {
+            $.ajax({
+                url:"/busqueda",
+                method:"post",
+                data:{query:query},
+                success:function(data)
+                {
+                    $('#result').html(data);
+                }
+            });
+        }
+
+        $('#search_text').keyup(function(){
+            var search = $(this).val();
+            if(search != '')
+            {
+                load_data(search);
+            }
+            else
+            {
+                load_data();
+            }
+        });
+    });
+</script>
 {% endblock %}

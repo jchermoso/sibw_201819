@@ -29,10 +29,16 @@ header h1 {
 .nav,
 .nav ul,
 .nav li,
-.nav a {
+.nav a,
+.search{
     border: none;
     outline: none;
     z-index: 999999;
+}
+
+.search{
+    text-decoration: none;
+    width: 100%;
 }
 
 .nav {
@@ -456,6 +462,15 @@ td, th {
 
 tr:nth-child(even) {
     background-color: #dddddd;
+}
+
+.input-group{
+    position: relative;
+    padding: 1rem 15px;
+    margin-right: -15px;
+    margin-left: -15px;
+    width: 100%;
+    border-bottom: 1px solid rgba(0,0,0,.05);
 }
 
 /**pie de página**/
