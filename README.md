@@ -3,6 +3,7 @@
 ### ETSIIT - Universidad de Granada
 
 Jonathan Ordóñez Cubero
+
 Juan Carlos Hermoso Quesada
 
 Implementación de un sistema de información en HTML5, CSS, PHP y Javascript
