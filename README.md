@@ -1,7 +1,9 @@
-# sibw_201819
+# Sistemas de Información Basados en Web
+## Curso 2018/2019
+### ETSIIT - Universidad de Granada
 
-# Jonathan Ordóñez Cubero
-# Juan Carlos Hermoso Quesada
+Jonathan Ordóñez Cubero
+Juan Carlos Hermoso Quesada
 
-Trabajo de SIBW en HTML5 y CSS
+Implementación de un sistema de información en HTML5, CSS, PHP y Javascript
 
